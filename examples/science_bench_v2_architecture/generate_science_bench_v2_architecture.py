@@ -8,6 +8,7 @@ labels, and a schematic-led composite layout.
 
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from pathlib import Path
 from textwrap import fill
 
@@ -23,6 +24,7 @@ from matplotlib.path import Path as MplPath
 plt.rcParams["font.family"] = "sans-serif"
 plt.rcParams["font.sans-serif"] = ["Arial", "DejaVu Sans", "Liberation Sans"]
 plt.rcParams["svg.fonttype"] = "none"
+plt.rcParams["svg.hashsalt"] = "science-bench-v2-architecture"
 plt.rcParams["pdf.fonttype"] = 42
 plt.rcParams["ps.fonttype"] = 42
 
@@ -48,6 +50,8 @@ PALETTE = {
     "grey_soft": "#F2F3F5",
     "white": "#FFFFFF",
 }
+
+FIXED_EXPORT_DATE = datetime(2026, 5, 25, tzinfo=timezone.utc)
 
 
 DISCIPLINES = [
@@ -446,8 +450,23 @@ def main() -> None:
     out_dir = Path(__file__).resolve().parent
     fig = build_figure()
     stem = out_dir / "science_bench_v2_architecture"
-    fig.savefig(stem.with_suffix(".svg"), bbox_inches="tight")
-    fig.savefig(stem.with_suffix(".pdf"), bbox_inches="tight")
+    fig.savefig(
+        stem.with_suffix(".svg"),
+        bbox_inches="tight",
+        metadata={
+            "Date": FIXED_EXPORT_DATE.isoformat(),
+            "Creator": "science_bench_v2_architecture.py",
+        },
+    )
+    fig.savefig(
+        stem.with_suffix(".pdf"),
+        bbox_inches="tight",
+        metadata={
+            "CreationDate": FIXED_EXPORT_DATE,
+            "ModDate": FIXED_EXPORT_DATE,
+            "Creator": "science_bench_v2_architecture.py",
+        },
+    )
     fig.savefig(stem.with_suffix(".png"), dpi=450, bbox_inches="tight")
     plt.close(fig)
     print(f"Wrote {stem.with_suffix('.svg')}")
