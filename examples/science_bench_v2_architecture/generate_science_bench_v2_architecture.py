@@ -1,455 +1,458 @@
 #!/usr/bin/env python3
-"""Generate a Nature-style architecture diagram for Science Bench V2.
+"""Generate a Nature-style schematic architecture figure for Science Bench V2.
 
-The script intentionally uses only the Python standard library so the figure can be
-regenerated in lightweight agent environments.  Visual constants mirror the
-`nature-figure` skill: editable SVG text, a restrained semantic palette, lowercase
-panel labels, and a schematic-led multi-panel layout.
+This version follows the `nature-figure` Python track: matplotlib patches,
+editable SVG text, restrained colour families, lowercase panel letters, direct
+labels, and a schematic-led composite layout.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from html import escape
 from pathlib import Path
-from textwrap import wrap
+from textwrap import fill
+
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from matplotlib.patches import Circle, FancyArrowPatch, FancyBboxPatch, PathPatch, Polygon, Rectangle
+from matplotlib.path import Path as MplPath
 
 
-WIDTH = 1800
-HEIGHT = 1220
+# Mandatory nature-figure rules: editable SVG text and publication font stack.
+plt.rcParams["font.family"] = "sans-serif"
+plt.rcParams["font.sans-serif"] = ["Arial", "DejaVu Sans", "Liberation Sans"]
+plt.rcParams["svg.fonttype"] = "none"
+plt.rcParams["pdf.fonttype"] = 42
+plt.rcParams["ps.fonttype"] = 42
+
 
 PALETTE = {
-    "blue_main": "#0F4D92",
-    "blue_secondary": "#3775BA",
-    "green_1": "#DDF3DE",
-    "green_2": "#AADCA9",
-    "green_3": "#8BCF8B",
-    "red_1": "#F6CFCB",
-    "red_2": "#E9A6A1",
-    "red_strong": "#B64342",
+    "ink": "#272727",
+    "muted": "#606060",
+    "line": "#4D4D4D",
+    "hairline": "#C9CDD3",
+    "blue": "#0F4D92",
+    "blue_mid": "#3775BA",
+    "blue_soft": "#DCE9F6",
     "teal": "#42949E",
-    "violet": "#9A4D8E",
-    "gold": "#FFD700",
-    "neutral_light": "#EFEFF2",
-    "neutral_mid": "#767676",
-    "neutral_dark": "#4D4D4D",
-    "neutral_black": "#272727",
-    "bg_lilac": "#E0E0F0",
-    "bg_aqua": "#E0F0F0",
-    "bg_peach": "#F0E0D0",
+    "teal_soft": "#DCEFF1",
+    "green": "#6FB36F",
+    "green_soft": "#E1F1E2",
+    "rose": "#B64342",
+    "rose_soft": "#F4D8D5",
+    "violet": "#7C6CCF",
+    "violet_soft": "#E8E4F8",
+    "gold": "#C89B2D",
+    "gold_soft": "#F4E8CB",
+    "grey_soft": "#F2F3F5",
     "white": "#FFFFFF",
 }
 
-FONT_STACK = "Arial, DejaVu Sans, Liberation Sans, sans-serif"
+
+DISCIPLINES = [
+    ("Physics", "20 domains", "one-step probe -> scalar z", PALETTE["blue"], PALETTE["blue_soft"]),
+    ("Chemistry", "20 domains", "titration / buffer operations", PALETTE["gold"], PALETTE["gold_soft"]),
+    ("Biology", "20 domains", "dose / incubate / response", PALETTE["green"], PALETTE["green_soft"]),
+]
+
+RELATIONS = [
+    ("I", "initial", "first predictive law", PALETTE["blue"]),
+    ("U", "utilize", "extrapolate while keeping prior fit", PALETTE["teal"]),
+    ("R", "refine", "same family, tighter parameters", PALETTE["violet"]),
+    ("C", "correct", "anomaly falsifies old law", PALETTE["rose"]),
+]
 
 
-@dataclass
-class Svg:
-    width: int = WIDTH
-    height: int = HEIGHT
-    elements: list[str] = field(default_factory=list)
-
-    def add(self, element: str) -> None:
-        self.elements.append(element)
-
-    def render(self) -> str:
-        defs = f"""
-  <defs>
-    <marker id="arrow" markerWidth="14" markerHeight="10" refX="12" refY="5"
-            orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 14 5 L 0 10 z" fill="{PALETTE['neutral_dark']}"/>
-    </marker>
-    <marker id="arrow-blue" markerWidth="14" markerHeight="10" refX="12" refY="5"
-            orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 14 5 L 0 10 z" fill="{PALETTE['blue_main']}"/>
-    </marker>
-    <filter id="shadow" x="-8%" y="-8%" width="116%" height="116%">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.12"/>
-    </filter>
-  </defs>"""
-        body = "\n".join(self.elements)
-        return f"""<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="{self.width}" height="{self.height}"
-     viewBox="0 0 {self.width} {self.height}" role="img"
-     aria-label="Science Bench V2 architecture diagram">
-{defs}
-  <rect width="100%" height="100%" fill="{PALETTE['white']}"/>
-{body}
-</svg>
-"""
-
-    def save(self, path: Path) -> None:
-        path.write_text(self.render(), encoding="utf-8")
+def setup_axes(ax: plt.Axes) -> None:
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    for spine in ax.spines.values():
+        spine.set_visible(False)
 
 
-def rect(
-    svg: Svg,
-    x: float,
-    y: float,
-    w: float,
-    h: float,
-    fill: str,
-    stroke: str = "#FFFFFF",
-    sw: float = 1.4,
-    rx: float = 18,
-    opacity: float = 1.0,
-    shadow: bool = False,
-) -> None:
-    filt = ' filter="url(#shadow)"' if shadow else ""
-    svg.add(
-        f'  <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" '
-        f'rx="{rx:.1f}" fill="{fill}" stroke="{stroke}" stroke-width="{sw:.1f}" '
-        f'opacity="{opacity:.3f}"{filt}/>'
+def add_panel_label(ax: plt.Axes, label: str, x: float = 0.0, y: float = 1.03) -> None:
+    ax.text(
+        x,
+        y,
+        label,
+        transform=ax.transAxes,
+        ha="left",
+        va="bottom",
+        fontsize=9,
+        fontweight="bold",
+        color=PALETTE["ink"],
     )
 
 
-def line(
-    svg: Svg,
-    x1: float,
-    y1: float,
-    x2: float,
-    y2: float,
-    stroke: str = PALETTE["neutral_dark"],
-    sw: float = 3,
-    arrow: bool = True,
-    dash: str | None = None,
-) -> None:
-    marker = ' marker-end="url(#arrow)"' if arrow else ""
-    dash_attr = f' stroke-dasharray="{dash}"' if dash else ""
-    svg.add(
-        f'  <line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" '
-        f'stroke="{stroke}" stroke-width="{sw:.1f}" stroke-linecap="round"{marker}{dash_attr}/>'
+def add_title(ax: plt.Axes, title: str) -> None:
+    ax.text(
+        0.10,
+        1.03,
+        title,
+        transform=ax.transAxes,
+        ha="left",
+        va="bottom",
+        fontsize=8.5,
+        fontweight="bold",
+        color=PALETTE["ink"],
     )
 
 
-def polyline(
-    svg: Svg,
-    points: list[tuple[float, float]],
-    stroke: str = PALETTE["neutral_dark"],
-    sw: float = 3,
-    arrow: bool = True,
-    dash: str | None = None,
-) -> None:
-    marker = ' marker-end="url(#arrow)"' if arrow else ""
-    dash_attr = f' stroke-dasharray="{dash}"' if dash else ""
-    point_str = " ".join(f"{x:.1f},{y:.1f}" for x, y in points)
-    svg.add(
-        f'  <polyline points="{point_str}" fill="none" stroke="{stroke}" '
-        f'stroke-width="{sw:.1f}" stroke-linecap="round" stroke-linejoin="round"{marker}{dash_attr}/>'
-    )
-
-
-def text(
-    svg: Svg,
-    x: float,
-    y: float,
-    value: str,
-    size: float = 20,
-    fill: str = PALETTE["neutral_black"],
-    weight: str = "400",
-    anchor: str = "start",
-    style: str = "normal",
-) -> None:
-    svg.add(
-        f'  <text x="{x:.1f}" y="{y:.1f}" font-family="{FONT_STACK}" '
-        f'font-size="{size:.1f}" font-weight="{weight}" font-style="{style}" '
-        f'fill="{fill}" text-anchor="{anchor}">{escape(value)}</text>'
-    )
-
-
-def text_block(
-    svg: Svg,
-    x: float,
-    y: float,
-    value: str | list[str],
-    max_chars: int = 26,
-    size: float = 17,
-    fill: str = PALETTE["neutral_black"],
-    weight: str = "400",
-    anchor: str = "start",
-    line_height: float = 1.28,
-) -> float:
-    lines: list[str] = []
-    if isinstance(value, str):
-        for part in value.split("\n"):
-            wrapped = wrap(part, width=max_chars, break_long_words=False) or [""]
-            lines.extend(wrapped)
-    else:
-        for item in value:
-            wrapped = wrap(item, width=max_chars, break_long_words=False) or [""]
-            lines.extend(wrapped)
-    for idx, item in enumerate(lines):
-        text(svg, x, y + idx * size * line_height, item, size=size, fill=fill, weight=weight, anchor=anchor)
-    return y + len(lines) * size * line_height
-
-
-def panel(svg: Svg, label: str, title: str, x: float, y: float, w: float, h: float) -> None:
-    rect(svg, x, y, w, h, "#FAFAFC", PALETTE["neutral_light"], sw=1.6, rx=24, shadow=True)
-    text(svg, x + 22, y + 38, label, size=28, weight="700")
-    text(svg, x + 62, y + 38, title, size=25, weight="700")
-
-
-def node(
-    svg: Svg,
-    x: float,
-    y: float,
-    w: float,
-    h: float,
+def add_box(
+    ax: plt.Axes,
+    xy: tuple[float, float],
+    wh: tuple[float, float],
     title: str,
-    body: str,
-    fill: str,
-    stroke: str,
-    title_color: str | None = None,
-    body_size: float = 15.5,
+    body: str = "",
+    *,
+    fc: str = PALETTE["white"],
+    ec: str = PALETTE["line"],
+    lw: float = 0.75,
+    radius: float = 0.015,
+    title_color: str = PALETTE["ink"],
+    body_color: str = PALETTE["muted"],
+    title_size: float = 7.2,
+    body_size: float = 6.1,
+    wrap_width: int = 24,
+) -> FancyBboxPatch:
+    x, y = xy
+    w, h = wh
+    patch = FancyBboxPatch(
+        (x, y),
+        w,
+        h,
+        boxstyle=f"round,pad=0.006,rounding_size={radius}",
+        facecolor=fc,
+        edgecolor=ec,
+        linewidth=lw,
+        mutation_aspect=1,
+    )
+    ax.add_patch(patch)
+    ax.text(
+        x + 0.018,
+        y + h - 0.035,
+        title,
+        ha="left",
+        va="top",
+        fontsize=title_size,
+        fontweight="bold",
+        color=title_color,
+    )
+    if body:
+        ax.text(
+            x + 0.018,
+            y + h - 0.070,
+            fill(body, wrap_width),
+            ha="left",
+            va="top",
+            fontsize=body_size,
+            color=body_color,
+            linespacing=1.25,
+        )
+    return patch
+
+
+def add_arrow(
+    ax: plt.Axes,
+    start: tuple[float, float],
+    end: tuple[float, float],
+    *,
+    color: str = PALETTE["line"],
+    lw: float = 0.8,
+    rad: float = 0,
+    mutation_scale: float = 8,
+    linestyle: str = "-",
 ) -> None:
-    rect(svg, x, y, w, h, fill, stroke, sw=2.2, rx=18)
-    text(svg, x + 18, y + 30, title, size=19, weight="700", fill=title_color or PALETTE["neutral_black"])
-    text_block(svg, x + 18, y + 58, body, max_chars=max(18, int(w / 10.5)), size=body_size, fill=PALETTE["neutral_dark"])
-
-
-def chip(svg: Svg, x: float, y: float, w: float, label: str, fill: str, stroke: str | None = None) -> None:
-    rect(svg, x, y, w, 36, fill, stroke or fill, sw=1.0, rx=18)
-    text(svg, x + w / 2, y + 24, label, size=15.5, weight="700", anchor="middle", fill=PALETTE["neutral_black"])
-
-
-def draw_header(svg: Svg) -> None:
-    text(svg, 70, 58, "Science Bench V2 procedural benchmark architecture", size=34, weight="700")
-    text(
-        svg,
-        70,
-        92,
-        "60 domains | hidden simulators | I/U/R/C layered discovery | 32-point hold-out gates",
-        size=19,
-        fill=PALETTE["neutral_dark"],
+    arrow = FancyArrowPatch(
+        start,
+        end,
+        arrowstyle="-|>",
+        mutation_scale=mutation_scale,
+        linewidth=lw,
+        color=color,
+        shrinkA=2,
+        shrinkB=2,
+        connectionstyle=f"arc3,rad={rad}",
+        linestyle=linestyle,
     )
-    rect(svg, 1340, 38, 380, 58, PALETTE["neutral_light"], "none", rx=20)
-    text(svg, 1365, 62, "figure contract", size=14, weight="700", fill=PALETTE["neutral_mid"])
-    text(svg, 1365, 84, "schematic-led composite; SVG-first output", size=15, fill=PALETTE["neutral_dark"])
+    ax.add_patch(arrow)
 
 
-def draw_pipeline_panel(svg: Svg) -> None:
-    panel(svg, "a", "End-to-end benchmark pipeline", 60, 125, 1160, 520)
-
-    y = 225
-    x0 = 100
-    gap = 34
-    w = 155
-    h = 142
-    items = [
-        (
-            "Domain catalogs",
-            "60 fixed domains\nphysics / chemistry / biology\n3-5 layers each",
-            PALETTE["bg_lilac"],
-            PALETTE["baseline_dark"] if "baseline_dark" in PALETTE else PALETTE["violet"],
-        ),
-        (
-            "Layer prompts",
-            "runtime assembly\nrelation: initial, utilize,\nrefine, correct",
-            PALETTE["bg_aqua"],
-            PALETTE["teal"],
-        ),
-        (
-            "Hidden benches",
-            "physics probe -> z\nchem/bio atomic actions\nweak noise by seed",
-            PALETTE["bg_peach"],
-            PALETTE["gold"],
-        ),
-        (
-            "LLM runner",
-            "DeepSeek chat / reasoner\nJSON action loop\nround limits",
-            PALETTE["green_1"],
-            PALETTE["green_3"],
-        ),
-        (
-            "Law submit",
-            "def discovered_law(...)\nexecutable Python\nsame template for utilize",
-            PALETTE["red_1"],
-            PALETTE["red_strong"],
-        ),
-        (
-            "Evaluation",
-            "32 hidden hold-out points\nconformance + cross-layer\nadvance if score >=55",
-            "#E8EFF8",
-            PALETTE["blue_main"],
-        ),
-    ]
-
-    centers = []
-    for idx, (title, body, fill, stroke) in enumerate(items):
-        x = x0 + idx * (w + gap)
-        centers.append((x + w / 2, y + h / 2))
-        node(svg, x, y, w, h, title, body, fill, stroke, body_size=14.0)
-        if idx < len(items) - 1:
-            line(svg, x + w + 6, y + h / 2, x + w + gap - 6, y + h / 2, sw=3.2)
-
-    # Cross-layer branch and outputs.
-    rect(svg, 172, 448, 880, 118, "#FFFFFF", PALETTE["neutral_light"], sw=1.4, rx=18)
-    text(svg, 202, 482, "Layer-to-layer mechanics", size=20, weight="700")
-    text_block(
-        svg,
-        202,
-        512,
-        [
-            "utilize: new law keeps the same template and still fits the previous layer domain",
-            "correct: previous law must fail in the anomaly region; new law covers the full range",
-        ],
-        max_chars=80,
-        size=15.5,
-        fill=PALETTE["neutral_dark"],
+def add_chip(ax: plt.Axes, x: float, y: float, text: str, color: str, width: float = 0.13) -> None:
+    patch = FancyBboxPatch(
+        (x, y),
+        width,
+        0.038,
+        boxstyle="round,pad=0.003,rounding_size=0.018",
+        facecolor=color,
+        edgecolor=color,
+        linewidth=0.5,
     )
-    polyline(svg, [(1055, 296), (1110, 296), (1110, 506), (1055, 506)], stroke=PALETTE["blue_main"], sw=3.5)
-    text(svg, 1085, 333, "reports", size=15, weight="700", anchor="middle", fill=PALETTE["blue_main"])
-    text(svg, 1085, 357, "scores", size=15, weight="700", anchor="middle", fill=PALETTE["blue_main"])
-
-    # Discipline-specific bench lanes.
-    lane_y = 390
-    chip(svg, 112, lane_y, 168, "Physics: probe(...)", "#E8EFF8", PALETTE["blue_secondary"])
-    chip(svg, 302, lane_y, 194, "Chemistry: add/read", PALETTE["bg_peach"], PALETTE["gold"])
-    chip(svg, 518, lane_y, 176, "Biology: dose/read", PALETTE["green_1"], PALETTE["green_3"])
-    text(svg, 715, lane_y + 25, "all lanes submit the same object: an executable prediction law", size=15.5)
+    ax.add_patch(patch)
+    ax.text(x + width / 2, y + 0.019, text, ha="center", va="center", fontsize=5.8, color=PALETTE["ink"])
 
 
-def draw_domain_panel(svg: Svg) -> None:
-    panel(svg, "b", "Domain and relation landscape", 1260, 125, 480, 520)
+def draw_pipeline(ax: plt.Axes) -> None:
+    setup_axes(ax)
+    add_panel_label(ax, "a")
+    add_title(ax, "Science Bench V2: hidden procedural discovery pipeline")
 
-    cards = [
-        ("Physics", "20 domains", "one-step probe -> scalar z", "#E8EFF8", PALETTE["blue_main"]),
-        ("Chemistry", "20 domains", "titration / buffer operations", PALETTE["bg_peach"], PALETTE["gold"]),
-        ("Biology", "20 domains", "dose / incubate / response", PALETTE["green_1"], PALETTE["green_3"]),
+    # A fine baseline makes this read as a methods schematic instead of a UI card row.
+    ax.plot([0.03, 0.97], [0.50, 0.50], color=PALETTE["hairline"], lw=0.7, zorder=0)
+
+    steps = [
+        ("Catalogs", "60 domains\n3-5 layers", PALETTE["violet"], PALETTE["violet_soft"]),
+        ("Prompts", "catalog fields\n+ relation", PALETTE["teal"], PALETTE["teal_soft"]),
+        ("Bench", "hidden probe\nor actions", PALETTE["gold"], PALETTE["gold_soft"]),
+        ("Agent", "JSON loop\nchat / reasoner", PALETTE["green"], PALETTE["green_soft"]),
+        ("Law", "discovered_law(...)\nPython", PALETTE["rose"], PALETTE["rose_soft"]),
+        ("Gate", "32 hold-outs\nmean >=55", PALETTE["blue"], PALETTE["blue_soft"]),
     ]
-    for idx, (title, count, body, fill, stroke) in enumerate(cards):
-        x = 1300
-        y = 205 + idx * 88
-        rect(svg, x, y, 400, 66, fill, stroke, sw=2.0, rx=18)
-        text(svg, x + 22, y + 29, title, size=20, weight="700")
-        text(svg, x + 282, y + 29, count, size=18, weight="700", anchor="middle", fill=stroke)
-        text(svg, x + 22, y + 54, body, size=15, fill=PALETTE["neutral_dark"])
 
-    text(svg, 1300, 505, "Layer relation vocabulary", size=19, weight="700")
-    relation_x = [1304, 1402, 1500, 1598]
-    relation = [
-        ("I", "initial", PALETTE["blue_secondary"]),
-        ("U", "utilize", PALETTE["teal"]),
-        ("R", "refine", PALETTE["violet"]),
-        ("C", "correct", PALETTE["red_strong"]),
+    xs = [0.07, 0.235, 0.400, 0.565, 0.730, 0.895]
+    y = 0.53
+    for idx, ((title, body, edge, fill_color), x) in enumerate(zip(steps, xs)):
+        add_box(
+            ax,
+            (x - 0.065, y),
+            (0.13, 0.19),
+            title,
+            body,
+            fc=fill_color,
+            ec=edge,
+            lw=0.85,
+            radius=0.012,
+            title_color=edge,
+            title_size=6.9,
+            body_size=5.7,
+            wrap_width=16,
+        )
+        ax.plot([x, x], [0.50, y], color=edge, lw=0.8)
+        ax.add_patch(Circle((x, 0.50), 0.009, facecolor=edge, edgecolor="white", linewidth=0.45, zorder=3))
+        if idx < len(xs) - 1:
+            add_arrow(ax, (x + 0.071, y + 0.095), (xs[idx + 1] - 0.071, y + 0.095), lw=0.75)
+
+    # Discipline lanes are direct labels, not legend boxes.
+    lane_y = 0.33
+    lane_items = [
+        ("physics probe -> z", PALETTE["blue_soft"], 0.07, 0.22),
+        ("chemistry titration", PALETTE["gold_soft"], 0.39, 0.20),
+        ("biology dose-response", PALETTE["green_soft"], 0.68, 0.23),
     ]
-    for (letter, label, color), x in zip(relation, relation_x):
-        rect(svg, x, 528, 74, 66, color, color, sw=1.0, rx=16)
-        text(svg, x + 37, 556, letter, size=24, weight="700", anchor="middle", fill=PALETTE["white"])
-        text(svg, x + 37, 580, label, size=12.5, weight="700", anchor="middle", fill=PALETTE["white"])
-    text(svg, 1300, 620, "Common chains: IURC, IUC, IURCC", size=15.5, fill=PALETTE["neutral_dark"])
+    for label, color, x, w in lane_items:
+        add_chip(ax, x, lane_y, label, color, width=w)
 
-
-def draw_loop_panel(svg: Svg) -> None:
-    panel(svg, "c", "Single-layer agent loop and gate", 60, 690, 820, 430)
-
-    loop_nodes = [
-        (130, 780, 160, 74, "Read task", "phenomenon + actions"),
-        (360, 780, 160, 74, "Experiment", "probe or atomic ops"),
-        (590, 780, 160, 74, "Observation", "scalar / pH / response"),
-        (590, 960, 160, 74, "Submit law", "Python function"),
-        (360, 960, 160, 74, "Hold-out", "32 hidden points"),
-        (130, 960, 160, 74, "Decision", "advance or stop"),
+    # Cross-layer constraints are drawn as a subtle returning path.
+    path_data = [
+        (MplPath.MOVETO, (0.895, 0.52)),
+        (MplPath.CURVE4, (0.895, 0.20)),
+        (MplPath.CURVE4, (0.360, 0.20)),
+        (MplPath.CURVE4, (0.360, 0.52)),
     ]
-    for x, y, w, h, title, body in loop_nodes:
-        node(svg, x, y, w, h, title, body, "#FFFFFF", PALETTE["neutral_light"], body_size=14.0)
+    codes, verts = zip(*path_data)
+    feedback = PathPatch(MplPath(verts, codes), facecolor="none", edgecolor=PALETTE["blue"], lw=0.9, alpha=0.9)
+    ax.add_patch(feedback)
+    add_arrow(ax, (0.366, 0.515), (0.360, 0.535), color=PALETTE["blue"], lw=0.0, mutation_scale=7)
+    ax.text(0.60, 0.235, "cross-layer checks: prior fit retention and anomaly correction", ha="center", va="center", fontsize=6.2, color=PALETTE["blue"])
 
-    arrows = [
-        ((294, 817), (356, 817)),
-        ((524, 817), (586, 817)),
-        ((670, 858), (670, 956)),
-        ((586, 997), (524, 997)),
-        ((356, 997), (294, 997)),
-        ((210, 956), (210, 858)),
+
+def draw_domain_relation(ax: plt.Axes) -> None:
+    setup_axes(ax)
+    add_panel_label(ax, "b")
+    add_title(ax, "Domains and relation types")
+
+    # Domain composition as a compact horizontal stacked strip.
+    x0, y0, h = 0.04, 0.74, 0.15
+    widths = [0.29, 0.29, 0.29]
+    x = x0
+    for (name, count, desc, edge, fill_color), w in zip(DISCIPLINES, widths):
+        rect = Rectangle((x, y0), w, h, facecolor=fill_color, edgecolor=edge, linewidth=0.75)
+        ax.add_patch(rect)
+        ax.text(x + 0.018, y0 + 0.098, name, ha="left", va="center", fontsize=6.8, fontweight="bold", color=edge)
+        ax.text(x + 0.018, y0 + 0.052, count, ha="left", va="center", fontsize=6.2, color=PALETTE["ink"])
+        x += w
+
+    ax.text(0.04, 0.65, "Experiment forms: physics probe; chemistry titration; biology dose-response", fontsize=5.6, color=PALETTE["muted"])
+    ax.text(0.04, 0.595, "Layer chains: IURC, IUC, IURCC", fontsize=6.3, color=PALETTE["ink"], fontweight="bold")
+
+    # Relation map: a sequence of scientific tasks.
+    xs = [0.11, 0.34, 0.57, 0.80]
+    y = 0.34
+    for idx, ((letter, name, desc, color), x) in enumerate(zip(RELATIONS, xs)):
+        ax.add_patch(Circle((x, y), 0.045, facecolor=color, edgecolor="white", linewidth=0.8))
+        ax.text(x, y + 0.004, letter, ha="center", va="center", fontsize=11, fontweight="bold", color="white")
+        ax.text(x, y - 0.082, name, ha="center", va="center", fontsize=6.3, fontweight="bold", color=PALETTE["ink"])
+        ax.text(x, y - 0.135, fill(desc, 17), ha="center", va="top", fontsize=5.2, color=PALETTE["muted"], linespacing=1.15)
+        if idx < len(xs) - 1:
+            add_arrow(ax, (x + 0.052, y), (xs[idx + 1] - 0.052, y), lw=0.75)
+
+
+def draw_agent_loop(ax: plt.Axes) -> None:
+    setup_axes(ax)
+    add_panel_label(ax, "c")
+    add_title(ax, "Single-layer agent loop")
+
+    cx, cy = 0.50, 0.50
+    r = 0.28
+    loop = [
+        ("read", "task", 100, PALETTE["violet"], PALETTE["violet_soft"]),
+        ("experiment", "probe / ops", 25, PALETTE["gold"], PALETTE["gold_soft"]),
+        ("observe", "numeric readout", -50, PALETTE["teal"], PALETTE["teal_soft"]),
+        ("submit", "Python law", -125, PALETTE["rose"], PALETTE["rose_soft"]),
+        ("score", "hidden points", -200, PALETTE["blue"], PALETTE["blue_soft"]),
     ]
-    for (x1, y1), (x2, y2) in arrows:
-        line(svg, x1, y1, x2, y2, stroke=PALETTE["blue_main"], sw=3.5)
 
-    rect(svg, 323, 872, 244, 62, PALETTE["neutral_light"], "none", rx=20)
-    text(svg, 445, 898, "hypothesis update", size=17, weight="700", anchor="middle")
-    text(svg, 445, 921, "agent plans next action", size=14.5, anchor="middle", fill=PALETTE["neutral_dark"])
+    points: list[tuple[float, float]] = []
+    for title, body, deg, edge, fill_color in loop:
+        import math
 
-    rect(svg, 105, 1050, 320, 42, "#E8EFF8", PALETTE["blue_secondary"], sw=1.2, rx=18)
-    text(svg, 265, 1077, "Physics: <=40 rounds, >=6 probes", size=15, weight="700", anchor="middle")
-    rect(svg, 455, 1050, 360, 42, PALETTE["bg_peach"], PALETTE["gold"], sw=1.2, rx=18)
-    text(svg, 635, 1077, "Chem/Bio: <=48 rounds, >=8 valid experiments", size=15, weight="700", anchor="middle")
+        x = cx + r * math.cos(math.radians(deg))
+        y = cy + r * math.sin(math.radians(deg))
+        points.append((x, y))
+        add_box(
+            ax,
+            (x - 0.085, y - 0.043),
+            (0.17, 0.086),
+            title,
+            body,
+            fc=fill_color,
+            ec=edge,
+            lw=0.75,
+            radius=0.012,
+            title_color=edge,
+            title_size=6.4,
+            body_size=5.3,
+            wrap_width=14,
+        )
+
+    for p1, p2 in zip(points, points[1:] + [points[0]]):
+        add_arrow(ax, p1, p2, lw=0.7, rad=0.16, mutation_scale=7)
+
+    ax.add_patch(Circle((cx, cy), 0.105, facecolor=PALETTE["grey_soft"], edgecolor=PALETTE["hairline"], linewidth=0.65))
+    ax.text(cx, cy + 0.022, "hypothesis", ha="center", va="center", fontsize=7, fontweight="bold", color=PALETTE["ink"])
+    ax.text(cx, cy - 0.022, "update", ha="center", va="center", fontsize=6.2, color=PALETTE["muted"])
+
+    ax.plot([0.09, 0.91], [0.13, 0.13], color=PALETTE["hairline"], lw=0.7)
+    ax.text(0.10, 0.080, "physics: <=40 rounds, >=6 probes", fontsize=5.6, color=PALETTE["blue"])
+    ax.text(0.10, 0.040, "chem/bio: <=48 rounds, >=8 valid experiments", fontsize=5.6, color=PALETTE["gold"])
 
 
-def draw_bar(svg: Svg, x: float, y: float, w: float, h: float, value: float, total: float, color: str, label: str) -> None:
-    rect(svg, x, y, w, h, "#FFFFFF", PALETTE["neutral_light"], sw=1.0, rx=12)
-    fill_w = w * value / total if total else 0
-    if fill_w > 0:
-        rect(svg, x, y, fill_w, h, color, color, sw=1.0, rx=12)
-    text(svg, x + 12, y + h / 2 + 5, label, size=14.5, weight="700", fill=PALETTE["neutral_black"])
-    text(svg, x + w - 12, y + h / 2 + 5, f"{int(value)}/{int(total)}", size=14.5, weight="700", anchor="end")
+def draw_scoring(ax: plt.Axes) -> None:
+    setup_axes(ax)
+    add_panel_label(ax, "d")
+    add_title(ax, "Scoring and seed-0 summary")
 
+    add_box(
+        ax,
+        (0.03, 0.68),
+        (0.45, 0.20),
+        "layer conformance",
+        "mean of 32 hidden hold-out points; point score decays with relative error",
+        fc=PALETTE["blue_soft"],
+        ec=PALETTE["blue"],
+        title_color=PALETTE["blue"],
+        title_size=6.5,
+        body_size=5.0,
+        wrap_width=26,
+    )
+    add_box(
+        ax,
+        (0.52, 0.68),
+        (0.45, 0.20),
+        "domain composite",
+        "0.45 x processScore + 0.55 x finalRuleScore; runner stops at failed gate",
+        fc=PALETTE["grey_soft"],
+        ec=PALETTE["hairline"],
+        title_color=PALETTE["ink"],
+        title_size=6.5,
+        body_size=5.0,
+        wrap_width=26,
+    )
 
-def draw_scoring_panel(svg: Svg) -> None:
-    panel(svg, "d", "Scoring, gates and observed execution", 920, 690, 820, 430)
-
-    rect(svg, 960, 770, 330, 116, "#FFFFFF", PALETTE["neutral_light"], sw=1.4, rx=18)
-    text(svg, 982, 804, "Layer conformance", size=19, weight="700")
-    text(svg, 982, 835, "pointScore = 100 x exp(-(relErr / th)^2)", size=15.5, fill=PALETTE["neutral_dark"])
-    text(svg, 982, 863, "advance gate: mean score >= 55", size=15.5, weight="700", fill=PALETTE["blue_main"])
-
-    rect(svg, 960, 915, 330, 116, "#FFFFFF", PALETTE["neutral_light"], sw=1.4, rx=18)
-    text(svg, 982, 949, "Domain composite", size=19, weight="700")
-    text(svg, 982, 980, "0.45 x processScore + 0.55 x finalRuleScore", size=15.5, fill=PALETTE["neutral_dark"])
-    text(svg, 982, 1008, "runner stops when a layer fails the gate", size=15.5, fill=PALETTE["neutral_dark"])
-
-    # Mini vertical comparison chart.
-    chart_x = 1355
-    chart_y = 780
-    chart_w = 280
-    chart_h = 220
-    line(svg, chart_x, chart_y + chart_h, chart_x + chart_w, chart_y + chart_h, stroke=PALETTE["neutral_mid"], sw=1.4, arrow=False)
-    line(svg, chart_x, chart_y, chart_x, chart_y + chart_h, stroke=PALETTE["neutral_mid"], sw=1.4, arrow=False)
+    # Minimal bar chart with direct labels.
+    chart_left, chart_bottom = 0.10, 0.22
+    chart_w, chart_h = 0.78, 0.34
+    ax.plot([chart_left, chart_left], [chart_bottom, chart_bottom + chart_h], color=PALETTE["line"], lw=0.6)
+    ax.plot([chart_left, chart_left + chart_w], [chart_bottom, chart_bottom], color=PALETTE["line"], lw=0.6)
     for tick in [0, 30, 60]:
-        yy = chart_y + chart_h - chart_h * tick / 60
-        line(svg, chart_x - 6, yy, chart_x, yy, stroke=PALETTE["neutral_mid"], sw=1.2, arrow=False)
-        text(svg, chart_x - 12, yy + 5, str(tick), size=12.5, anchor="end", fill=PALETTE["neutral_mid"])
+        yy = chart_bottom + chart_h * tick / 60
+        ax.plot([chart_left - 0.012, chart_left], [yy, yy], color=PALETTE["line"], lw=0.5)
+        ax.text(chart_left - 0.025, yy, str(tick), ha="right", va="center", fontsize=5.3, color=PALETTE["muted"])
 
-    bars = [("chat", 0, PALETTE["neutral_mid"]), ("reasoner", 31, PALETTE["blue_main"])]
+    bars = [("chat", 0, PALETTE["muted"]), ("reasoner", 31, PALETTE["blue"])]
     for idx, (label, value, color) in enumerate(bars):
-        bx = chart_x + 60 + idx * 100
+        bx = chart_left + 0.22 + idx * 0.24
+        bw = 0.105
         bh = chart_h * value / 60
-        rect(svg, bx, chart_y + chart_h - bh, 58, bh if bh > 0 else 2, color, color, sw=1.0, rx=8)
-        text(svg, bx + 29, chart_y + chart_h + 26, label, size=14, anchor="middle", fill=PALETTE["neutral_dark"])
-        text(svg, bx + 29, chart_y + chart_h - bh - 12, f"{value}/60", size=14, weight="700", anchor="middle", fill=color)
-    text(svg, chart_x + chart_w / 2, chart_y - 18, "Full-chain domains", size=18, weight="700", anchor="middle")
+        ax.add_patch(Rectangle((bx, chart_bottom), bw, max(bh, 0.006), facecolor=color, edgecolor=color, linewidth=0.6))
+        ax.text(bx + bw / 2, chart_bottom - 0.055, label, ha="center", va="top", fontsize=5.8, color=PALETTE["ink"])
+        ax.text(bx + bw / 2, chart_bottom + bh + 0.025, f"{value}/60", ha="center", va="bottom", fontsize=6.1, fontweight="bold", color=color)
 
-    draw_bar(svg, 1350, 1040, 305, 34, 13, 20, PALETTE["blue_secondary"], "Physics reasoner")
-    draw_bar(svg, 1350, 1083, 305, 34, 18, 40, PALETTE["teal"], "Chem/Bio reasoner")
-    text(svg, 960, 1082, "Oracle smoke: 4/4 layers passed, supporting implementation validity.", size=16, fill=PALETTE["neutral_dark"])
+    ax.text(0.50, 0.60, "full-chain domains", ha="center", va="center", fontsize=6.5, fontweight="bold", color=PALETTE["ink"])
+    ax.text(0.10, 0.100, "reasoner: 13/20 physics; 18/40 chemistry/biology", fontsize=5.7, color=PALETTE["muted"])
+    ax.text(0.10, 0.055, "oracle smoke: 4/4 layers passed", fontsize=5.7, color=PALETTE["muted"])
 
 
-def draw_footer(svg: Svg) -> None:
-    text(
-        svg,
-        70,
-        1178,
-        "Source synthesis: Science Bench V2 evaluation report (seed 0) and nature-figure design rules; generated as editable SVG.",
-        size=14.5,
-        fill=PALETTE["neutral_mid"],
+def build_figure() -> plt.Figure:
+    fig = plt.figure(figsize=(7.35, 6.20), facecolor="white")
+    gs = fig.add_gridspec(
+        2,
+        3,
+        height_ratios=[0.95, 1.0],
+        width_ratios=[1.0, 1.0, 1.0],
+        left=0.055,
+        right=0.985,
+        top=0.875,
+        bottom=0.075,
+        hspace=0.38,
+        wspace=0.32,
+    )
+    ax_a = fig.add_subplot(gs[0, :])
+    ax_b = fig.add_subplot(gs[1, 0])
+    ax_c = fig.add_subplot(gs[1, 1])
+    ax_d = fig.add_subplot(gs[1, 2])
+
+    fig.text(
+        0.055,
+        0.955,
+        "Science Bench V2 procedural benchmark architecture",
+        ha="left",
+        va="top",
+        fontsize=11.5,
+        fontweight="bold",
+        color=PALETTE["ink"],
+    )
+    fig.text(
+        0.055,
+        0.920,
+        "A multi-layer scientific discovery benchmark with hidden simulators, executable laws and cross-layer gates",
+        ha="left",
+        va="top",
+        fontsize=7.1,
+        color=PALETTE["muted"],
     )
 
-
-def build() -> Svg:
-    svg = Svg()
-    draw_header(svg)
-    draw_pipeline_panel(svg)
-    draw_domain_panel(svg)
-    draw_loop_panel(svg)
-    draw_scoring_panel(svg)
-    draw_footer(svg)
-    return svg
+    draw_pipeline(ax_a)
+    draw_domain_relation(ax_b)
+    draw_agent_loop(ax_c)
+    draw_scoring(ax_d)
+    return fig
 
 
 def main() -> None:
     out_dir = Path(__file__).resolve().parent
-    out_path = out_dir / "science_bench_v2_architecture.svg"
-    build().save(out_path)
-    print(f"Wrote {out_path}")
+    fig = build_figure()
+    stem = out_dir / "science_bench_v2_architecture"
+    fig.savefig(stem.with_suffix(".svg"), bbox_inches="tight")
+    fig.savefig(stem.with_suffix(".pdf"), bbox_inches="tight")
+    fig.savefig(stem.with_suffix(".png"), dpi=450, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Wrote {stem.with_suffix('.svg')}")
+    print(f"Wrote {stem.with_suffix('.pdf')}")
+    print(f"Wrote {stem.with_suffix('.png')}")
 
 
 if __name__ == "__main__":

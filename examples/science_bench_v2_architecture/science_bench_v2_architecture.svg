@@ -1,191 +1,933 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1220"
-     viewBox="0 0 1800 1220" role="img"
-     aria-label="Science Bench V2 architecture diagram">
-
-  <defs>
-    <marker id="arrow" markerWidth="14" markerHeight="10" refX="12" refY="5"
-            orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 14 5 L 0 10 z" fill="#4D4D4D"/>
-    </marker>
-    <marker id="arrow-blue" markerWidth="14" markerHeight="10" refX="12" refY="5"
-            orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 14 5 L 0 10 z" fill="#0F4D92"/>
-    </marker>
-    <filter id="shadow" x="-8%" y="-8%" width="116%" height="116%">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.12"/>
-    </filter>
-  </defs>
-  <rect width="100%" height="100%" fill="#FFFFFF"/>
-  <text x="70.0" y="58.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="34.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Science Bench V2 procedural benchmark architecture</text>
-  <text x="70.0" y="92.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">60 domains | hidden simulators | I/U/R/C layered discovery | 32-point hold-out gates</text>
-  <rect x="1340.0" y="38.0" width="380.0" height="58.0" rx="20.0" fill="#EFEFF2" stroke="none" stroke-width="1.4" opacity="1.000"/>
-  <text x="1365.0" y="62.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="700" font-style="normal" fill="#767676" text-anchor="start">figure contract</text>
-  <text x="1365.0" y="84.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">schematic-led composite; SVG-first output</text>
-  <rect x="60.0" y="125.0" width="1160.0" height="520.0" rx="24.0" fill="#FAFAFC" stroke="#EFEFF2" stroke-width="1.6" opacity="1.000" filter="url(#shadow)"/>
-  <text x="82.0" y="163.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="28.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">a</text>
-  <text x="122.0" y="163.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="25.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">End-to-end benchmark pipeline</text>
-  <rect x="100.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#E0E0F0" stroke="#9A4D8E" stroke-width="2.2" opacity="1.000"/>
-  <text x="118.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Domain catalogs</text>
-  <text x="118.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">60 fixed domains</text>
-  <text x="118.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">physics /</text>
-  <text x="118.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">chemistry /</text>
-  <text x="118.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">biology</text>
-  <text x="118.0" y="354.7" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">3-5 layers each</text>
-  <line x1="261.0" y1="296.0" x2="283.0" y2="296.0" stroke="#4D4D4D" stroke-width="3.2" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <rect x="289.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#E0F0F0" stroke="#42949E" stroke-width="2.2" opacity="1.000"/>
-  <text x="307.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Layer prompts</text>
-  <text x="307.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">runtime assembly</text>
-  <text x="307.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">relation: initial,</text>
-  <text x="307.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">utilize,</text>
-  <text x="307.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">refine, correct</text>
-  <line x1="450.0" y1="296.0" x2="472.0" y2="296.0" stroke="#4D4D4D" stroke-width="3.2" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <rect x="478.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#F0E0D0" stroke="#FFD700" stroke-width="2.2" opacity="1.000"/>
-  <text x="496.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Hidden benches</text>
-  <text x="496.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">physics probe -&gt; z</text>
-  <text x="496.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">chem/bio atomic</text>
-  <text x="496.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">actions</text>
-  <text x="496.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">weak noise by seed</text>
-  <line x1="639.0" y1="296.0" x2="661.0" y2="296.0" stroke="#4D4D4D" stroke-width="3.2" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <rect x="667.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#DDF3DE" stroke="#8BCF8B" stroke-width="2.2" opacity="1.000"/>
-  <text x="685.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">LLM runner</text>
-  <text x="685.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">DeepSeek chat /</text>
-  <text x="685.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">reasoner</text>
-  <text x="685.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">JSON action loop</text>
-  <text x="685.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">round limits</text>
-  <line x1="828.0" y1="296.0" x2="850.0" y2="296.0" stroke="#4D4D4D" stroke-width="3.2" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <rect x="856.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#F6CFCB" stroke="#B64342" stroke-width="2.2" opacity="1.000"/>
-  <text x="874.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Law submit</text>
-  <text x="874.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">def</text>
-  <text x="874.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">discovered_law(...)</text>
-  <text x="874.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">executable Python</text>
-  <text x="874.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">same template for</text>
-  <text x="874.0" y="354.7" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">utilize</text>
-  <line x1="1017.0" y1="296.0" x2="1039.0" y2="296.0" stroke="#4D4D4D" stroke-width="3.2" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <rect x="1045.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#E8EFF8" stroke="#0F4D92" stroke-width="2.2" opacity="1.000"/>
-  <text x="1063.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Evaluation</text>
-  <text x="1063.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">32 hidden hold-out</text>
-  <text x="1063.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">points</text>
-  <text x="1063.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">conformance +</text>
-  <text x="1063.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">cross-layer</text>
-  <text x="1063.0" y="354.7" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">advance if score</text>
-  <text x="1063.0" y="372.6" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">&gt;=55</text>
-  <rect x="172.0" y="448.0" width="880.0" height="118.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="1.4" opacity="1.000"/>
-  <text x="202.0" y="482.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="20.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Layer-to-layer mechanics</text>
-  <text x="202.0" y="512.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">utilize: new law keeps the same template and still fits the previous layer</text>
-  <text x="202.0" y="531.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">domain</text>
-  <text x="202.0" y="551.7" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">correct: previous law must fail in the anomaly region; new law covers the full</text>
-  <text x="202.0" y="571.5" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">range</text>
-  <polyline points="1055.0,296.0 1110.0,296.0 1110.0,506.0 1055.0,506.0" fill="none" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
-  <text x="1085.0" y="333.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="700" font-style="normal" fill="#0F4D92" text-anchor="middle">reports</text>
-  <text x="1085.0" y="357.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="700" font-style="normal" fill="#0F4D92" text-anchor="middle">scores</text>
-  <rect x="112.0" y="390.0" width="168.0" height="36.0" rx="18.0" fill="#E8EFF8" stroke="#3775BA" stroke-width="1.0" opacity="1.000"/>
-  <text x="196.0" y="414.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Physics: probe(...)</text>
-  <rect x="302.0" y="390.0" width="194.0" height="36.0" rx="18.0" fill="#F0E0D0" stroke="#FFD700" stroke-width="1.0" opacity="1.000"/>
-  <text x="399.0" y="414.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Chemistry: add/read</text>
-  <rect x="518.0" y="390.0" width="176.0" height="36.0" rx="18.0" fill="#DDF3DE" stroke="#8BCF8B" stroke-width="1.0" opacity="1.000"/>
-  <text x="606.0" y="414.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Biology: dose/read</text>
-  <text x="715.0" y="415.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#272727" text-anchor="start">all lanes submit the same object: an executable prediction law</text>
-  <rect x="1260.0" y="125.0" width="480.0" height="520.0" rx="24.0" fill="#FAFAFC" stroke="#EFEFF2" stroke-width="1.6" opacity="1.000" filter="url(#shadow)"/>
-  <text x="1282.0" y="163.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="28.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">b</text>
-  <text x="1322.0" y="163.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="25.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Domain and relation landscape</text>
-  <rect x="1300.0" y="205.0" width="400.0" height="66.0" rx="18.0" fill="#E8EFF8" stroke="#0F4D92" stroke-width="2.0" opacity="1.000"/>
-  <text x="1322.0" y="234.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="20.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Physics</text>
-  <text x="1582.0" y="234.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="18.0" font-weight="700" font-style="normal" fill="#0F4D92" text-anchor="middle">20 domains</text>
-  <text x="1322.0" y="259.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">one-step probe -&gt; scalar z</text>
-  <rect x="1300.0" y="293.0" width="400.0" height="66.0" rx="18.0" fill="#F0E0D0" stroke="#FFD700" stroke-width="2.0" opacity="1.000"/>
-  <text x="1322.0" y="322.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="20.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Chemistry</text>
-  <text x="1582.0" y="322.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="18.0" font-weight="700" font-style="normal" fill="#FFD700" text-anchor="middle">20 domains</text>
-  <text x="1322.0" y="347.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">titration / buffer operations</text>
-  <rect x="1300.0" y="381.0" width="400.0" height="66.0" rx="18.0" fill="#DDF3DE" stroke="#8BCF8B" stroke-width="2.0" opacity="1.000"/>
-  <text x="1322.0" y="410.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="20.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Biology</text>
-  <text x="1582.0" y="410.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="18.0" font-weight="700" font-style="normal" fill="#8BCF8B" text-anchor="middle">20 domains</text>
-  <text x="1322.0" y="435.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">dose / incubate / response</text>
-  <text x="1300.0" y="505.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Layer relation vocabulary</text>
-  <rect x="1304.0" y="528.0" width="74.0" height="66.0" rx="16.0" fill="#3775BA" stroke="#3775BA" stroke-width="1.0" opacity="1.000"/>
-  <text x="1341.0" y="556.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="24.0" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">I</text>
-  <text x="1341.0" y="580.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">initial</text>
-  <rect x="1402.0" y="528.0" width="74.0" height="66.0" rx="16.0" fill="#42949E" stroke="#42949E" stroke-width="1.0" opacity="1.000"/>
-  <text x="1439.0" y="556.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="24.0" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">U</text>
-  <text x="1439.0" y="580.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">utilize</text>
-  <rect x="1500.0" y="528.0" width="74.0" height="66.0" rx="16.0" fill="#9A4D8E" stroke="#9A4D8E" stroke-width="1.0" opacity="1.000"/>
-  <text x="1537.0" y="556.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="24.0" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">R</text>
-  <text x="1537.0" y="580.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">refine</text>
-  <rect x="1598.0" y="528.0" width="74.0" height="66.0" rx="16.0" fill="#B64342" stroke="#B64342" stroke-width="1.0" opacity="1.000"/>
-  <text x="1635.0" y="556.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="24.0" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">C</text>
-  <text x="1635.0" y="580.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">correct</text>
-  <text x="1300.0" y="620.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">Common chains: IURC, IUC, IURCC</text>
-  <rect x="60.0" y="690.0" width="820.0" height="430.0" rx="24.0" fill="#FAFAFC" stroke="#EFEFF2" stroke-width="1.6" opacity="1.000" filter="url(#shadow)"/>
-  <text x="82.0" y="728.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="28.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">c</text>
-  <text x="122.0" y="728.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="25.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Single-layer agent loop and gate</text>
-  <rect x="130.0" y="780.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
-  <text x="148.0" y="810.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Read task</text>
-  <text x="148.0" y="838.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">phenomenon +</text>
-  <text x="148.0" y="855.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">actions</text>
-  <rect x="360.0" y="780.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
-  <text x="378.0" y="810.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Experiment</text>
-  <text x="378.0" y="838.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">probe or atomic</text>
-  <text x="378.0" y="855.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">ops</text>
-  <rect x="590.0" y="780.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
-  <text x="608.0" y="810.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Observation</text>
-  <text x="608.0" y="838.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">scalar / pH /</text>
-  <text x="608.0" y="855.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">response</text>
-  <rect x="590.0" y="960.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
-  <text x="608.0" y="990.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Submit law</text>
-  <text x="608.0" y="1018.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">Python function</text>
-  <rect x="360.0" y="960.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
-  <text x="378.0" y="990.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Hold-out</text>
-  <text x="378.0" y="1018.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">32 hidden points</text>
-  <rect x="130.0" y="960.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
-  <text x="148.0" y="990.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Decision</text>
-  <text x="148.0" y="1018.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">advance or stop</text>
-  <line x1="294.0" y1="817.0" x2="356.0" y2="817.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <line x1="524.0" y1="817.0" x2="586.0" y2="817.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <line x1="670.0" y1="858.0" x2="670.0" y2="956.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <line x1="586.0" y1="997.0" x2="524.0" y2="997.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <line x1="356.0" y1="997.0" x2="294.0" y2="997.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <line x1="210.0" y1="956.0" x2="210.0" y2="858.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
-  <rect x="323.0" y="872.0" width="244.0" height="62.0" rx="20.0" fill="#EFEFF2" stroke="none" stroke-width="1.4" opacity="1.000"/>
-  <text x="445.0" y="898.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="17.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">hypothesis update</text>
-  <text x="445.0" y="921.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="middle">agent plans next action</text>
-  <rect x="105.0" y="1050.0" width="320.0" height="42.0" rx="18.0" fill="#E8EFF8" stroke="#3775BA" stroke-width="1.2" opacity="1.000"/>
-  <text x="265.0" y="1077.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Physics: &lt;=40 rounds, &gt;=6 probes</text>
-  <rect x="455.0" y="1050.0" width="360.0" height="42.0" rx="18.0" fill="#F0E0D0" stroke="#FFD700" stroke-width="1.2" opacity="1.000"/>
-  <text x="635.0" y="1077.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Chem/Bio: &lt;=48 rounds, &gt;=8 valid experiments</text>
-  <rect x="920.0" y="690.0" width="820.0" height="430.0" rx="24.0" fill="#FAFAFC" stroke="#EFEFF2" stroke-width="1.6" opacity="1.000" filter="url(#shadow)"/>
-  <text x="942.0" y="728.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="28.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">d</text>
-  <text x="982.0" y="728.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="25.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Scoring, gates and observed execution</text>
-  <rect x="960.0" y="770.0" width="330.0" height="116.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="1.4" opacity="1.000"/>
-  <text x="982.0" y="804.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Layer conformance</text>
-  <text x="982.0" y="835.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">pointScore = 100 x exp(-(relErr / th)^2)</text>
-  <text x="982.0" y="863.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="700" font-style="normal" fill="#0F4D92" text-anchor="start">advance gate: mean score &gt;= 55</text>
-  <rect x="960.0" y="915.0" width="330.0" height="116.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="1.4" opacity="1.000"/>
-  <text x="982.0" y="949.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Domain composite</text>
-  <text x="982.0" y="980.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">0.45 x processScore + 0.55 x finalRuleScore</text>
-  <text x="982.0" y="1008.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">runner stops when a layer fails the gate</text>
-  <line x1="1355.0" y1="1000.0" x2="1635.0" y2="1000.0" stroke="#767676" stroke-width="1.4" stroke-linecap="round"/>
-  <line x1="1355.0" y1="780.0" x2="1355.0" y2="1000.0" stroke="#767676" stroke-width="1.4" stroke-linecap="round"/>
-  <line x1="1349.0" y1="1000.0" x2="1355.0" y2="1000.0" stroke="#767676" stroke-width="1.2" stroke-linecap="round"/>
-  <text x="1343.0" y="1005.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="400" font-style="normal" fill="#767676" text-anchor="end">0</text>
-  <line x1="1349.0" y1="890.0" x2="1355.0" y2="890.0" stroke="#767676" stroke-width="1.2" stroke-linecap="round"/>
-  <text x="1343.0" y="895.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="400" font-style="normal" fill="#767676" text-anchor="end">30</text>
-  <line x1="1349.0" y1="780.0" x2="1355.0" y2="780.0" stroke="#767676" stroke-width="1.2" stroke-linecap="round"/>
-  <text x="1343.0" y="785.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="400" font-style="normal" fill="#767676" text-anchor="end">60</text>
-  <rect x="1415.0" y="1000.0" width="58.0" height="2.0" rx="8.0" fill="#767676" stroke="#767676" stroke-width="1.0" opacity="1.000"/>
-  <text x="1444.0" y="1026.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="middle">chat</text>
-  <text x="1444.0" y="988.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="700" font-style="normal" fill="#767676" text-anchor="middle">0/60</text>
-  <rect x="1515.0" y="886.3" width="58.0" height="113.7" rx="8.0" fill="#0F4D92" stroke="#0F4D92" stroke-width="1.0" opacity="1.000"/>
-  <text x="1544.0" y="1026.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="middle">reasoner</text>
-  <text x="1544.0" y="874.3" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="700" font-style="normal" fill="#0F4D92" text-anchor="middle">31/60</text>
-  <text x="1495.0" y="762.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="18.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Full-chain domains</text>
-  <rect x="1350.0" y="1040.0" width="305.0" height="34.0" rx="12.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="1.0" opacity="1.000"/>
-  <rect x="1350.0" y="1040.0" width="198.2" height="34.0" rx="12.0" fill="#3775BA" stroke="#3775BA" stroke-width="1.0" opacity="1.000"/>
-  <text x="1362.0" y="1062.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Physics reasoner</text>
-  <text x="1643.0" y="1062.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="end">13/20</text>
-  <rect x="1350.0" y="1083.0" width="305.0" height="34.0" rx="12.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="1.0" opacity="1.000"/>
-  <rect x="1350.0" y="1083.0" width="137.2" height="34.0" rx="12.0" fill="#42949E" stroke="#42949E" stroke-width="1.0" opacity="1.000"/>
-  <text x="1362.0" y="1105.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Chem/Bio reasoner</text>
-  <text x="1643.0" y="1105.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="end">18/40</text>
-  <text x="960.0" y="1082.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="16.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">Oracle smoke: 4/4 layers passed, supporting implementation validity.</text>
-  <text x="70.0" y="1178.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="400" font-style="normal" fill="#767676" text-anchor="start">Source synthesis: Science Bench V2 evaluation report (seed 0) and nature-figure design rules; generated as editable SVG.</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="530.066403pt" height="407.232pt" viewBox="0 0 530.066403 407.232" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-05-25T03:42:17.494316</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 407.232 
+L 530.066403 407.232 
+L 530.066403 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 11.177154 189.114973 
+L 503.333154 189.114973 
+L 503.333154 42.912 
+L 11.177154 42.912 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 25.941834 116.013487 
+L 488.568474 116.013487 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #c9cdd3; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 16.59087 112.504615 
+L 74.665278 112.504615 
+Q 80.57115 112.504615 80.57115 110.75018 
+L 80.57115 84.72605 
+Q 80.57115 82.971615 74.665278 82.971615 
+L 16.59087 82.971615 
+Q 10.684998 82.971615 10.684998 84.72605 
+L 10.684998 110.75018 
+Q 10.684998 112.504615 16.59087 112.504615 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #e8e4f8; stroke: #7c6ccf; stroke-width: 0.85; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 82.569212 97.738115 
+Q 86.230915 97.738115 89.054092 97.738115 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+    <path d="M 85.854092 96.138115 
+L 89.054092 97.738115 
+L 85.854092 99.338115 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 97.79661 112.504615 
+L 155.871018 112.504615 
+Q 161.77689 112.504615 161.77689 110.75018 
+L 161.77689 84.72605 
+Q 161.77689 82.971615 155.871018 82.971615 
+L 97.79661 82.971615 
+Q 91.890738 82.971615 91.890738 84.72605 
+L 91.890738 110.75018 
+Q 91.890738 112.504615 97.79661 112.504615 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #dceff1; stroke: #42949e; stroke-width: 0.85; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 163.774952 97.738115 
+Q 167.436655 97.738115 170.259832 97.738115 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+    <path d="M 167.059832 96.138115 
+L 170.259832 97.738115 
+L 167.059832 99.338115 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 179.00235 112.504615 
+L 237.076758 112.504615 
+Q 242.98263 112.504615 242.98263 110.75018 
+L 242.98263 84.72605 
+Q 242.98263 82.971615 237.076758 82.971615 
+L 179.00235 82.971615 
+Q 173.096478 82.971615 173.096478 84.72605 
+L 173.096478 110.75018 
+Q 173.096478 112.504615 179.00235 112.504615 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #f4e8cb; stroke: #c89b2d; stroke-width: 0.85; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 244.980692 97.738115 
+Q 248.642395 97.738115 251.465572 97.738115 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+    <path d="M 248.265572 96.138115 
+L 251.465572 97.738115 
+L 248.265572 99.338115 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 260.20809 112.504615 
+L 318.282498 112.504615 
+Q 324.18837 112.504615 324.18837 110.75018 
+L 324.18837 84.72605 
+Q 324.18837 82.971615 318.282498 82.971615 
+L 260.20809 82.971615 
+Q 254.302218 82.971615 254.302218 84.72605 
+L 254.302218 110.75018 
+Q 254.302218 112.504615 260.20809 112.504615 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #e1f1e2; stroke: #6fb36f; stroke-width: 0.85; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 326.186432 97.738115 
+Q 329.848135 97.738115 332.671312 97.738115 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+    <path d="M 329.471312 96.138115 
+L 332.671312 97.738115 
+L 329.471312 99.338115 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 341.41383 112.504615 
+L 399.488238 112.504615 
+Q 405.39411 112.504615 405.39411 110.75018 
+L 405.39411 84.72605 
+Q 405.39411 82.971615 399.488238 82.971615 
+L 341.41383 82.971615 
+Q 335.507958 82.971615 335.507958 84.72605 
+L 335.507958 110.75018 
+Q 335.507958 112.504615 341.41383 112.504615 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #f4d8d5; stroke: #b64342; stroke-width: 0.85; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 407.392172 97.738115 
+Q 411.053875 97.738115 413.877052 97.738115 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+    <path d="M 410.677052 96.138115 
+L 413.877052 97.738115 
+L 410.677052 99.338115 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 422.61957 112.504615 
+L 480.693978 112.504615 
+Q 486.59985 112.504615 486.59985 110.75018 
+L 486.59985 84.72605 
+Q 486.59985 82.971615 480.693978 82.971615 
+L 422.61957 82.971615 
+Q 416.713698 82.971615 416.713698 84.72605 
+L 416.713698 110.75018 
+Q 416.713698 112.504615 422.61957 112.504615 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #dce9f6; stroke: #0f4d92; stroke-width: 0.85; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 53.010414 141.306601 
+L 146.520054 141.306601 
+Q 155.378862 141.306601 155.378862 138.674948 
+L 155.378862 137.505324 
+Q 155.378862 134.87367 146.520054 134.87367 
+L 53.010414 134.87367 
+Q 44.151606 134.87367 44.151606 137.505324 
+L 44.151606 138.674948 
+Q 44.151606 141.306601 53.010414 141.306601 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #dce9f6; stroke: #dce9f6; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 210.500334 141.306601 
+L 294.166854 141.306601 
+Q 303.025662 141.306601 303.025662 138.674948 
+L 303.025662 137.505324 
+Q 303.025662 134.87367 294.166854 134.87367 
+L 210.500334 134.87367 
+Q 201.641526 134.87367 201.641526 137.505324 
+L 201.641526 138.674948 
+Q 201.641526 141.306601 210.500334 141.306601 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #f4e8cb; stroke: #f4e8cb; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 353.225574 141.306601 
+L 451.656774 141.306601 
+Q 460.515582 141.306601 460.515582 138.674948 
+L 460.515582 137.505324 
+Q 460.515582 134.87367 451.656774 134.87367 
+L 353.225574 134.87367 
+Q 344.366766 134.87367 344.366766 137.505324 
+L 344.366766 138.674948 
+Q 344.366766 141.306601 353.225574 141.306601 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #e1f1e2; stroke: #e1f1e2; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 451.656774 113.089427 
+C 451.656774 159.874379 188.353314 159.874379 188.353314 113.089427 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; opacity: 0.9; stroke: #0f4d92; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 189.884573 112.412667 
+Q 189.829244 112.35788 189.773915 112.303092 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none"/>
+    <path d="M 190.778445 115.268041 
+L 189.773915 112.303092 
+L 192.748592 113.278438 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #0f4d92"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_2">
+    <path d="M 45.628074 116.013487 
+L 45.628074 111.627398 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #7c6ccf; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 126.833814 116.013487 
+L 126.833814 111.627398 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #42949e; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 208.039554 116.013487 
+L 208.039554 111.627398 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #c89b2d; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 289.245294 116.013487 
+L 289.245294 111.627398 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #6fb36f; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 370.451034 116.013487 
+L 370.451034 111.627398 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #b64342; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 451.656774 116.013487 
+L 451.656774 111.627398 
+" clip-path="url(#pa62d4e3c0a)" style="fill: none; stroke: #0f4d92; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="11.177154" y="36.654192" transform="rotate(-0 11.177154 36.654192)">a</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="60.392754" y="36.69177" transform="rotate(-0 60.392754 36.69177)">Science Bench V2: hidden procedural discovery pipeline</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 6.9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #7c6ccf" x="22.496742" y="94.208859" transform="rotate(-0 22.496742 94.208859)">Catalogs</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(22.496742 98.41415)">60 domains 3-5</text>
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(22.496742 105.013459)">layers</text>
+   </g>
+   <g id="patch_19">
+    <path d="M 45.628074 117.329314 
+C 46.802766 117.329314 47.929503 117.19067 48.760135 116.943917 
+C 49.590768 116.697164 50.057478 116.362448 50.057478 116.013487 
+C 50.057478 115.664525 49.590768 115.32981 48.760135 115.083057 
+C 47.929503 114.836304 46.802766 114.69766 45.628074 114.69766 
+C 44.453382 114.69766 43.326645 114.836304 42.496012 115.083057 
+C 41.66538 115.32981 41.19867 115.664525 41.19867 116.013487 
+C 41.19867 116.362448 41.66538 116.697164 42.496012 116.943917 
+C 43.326645 117.19067 44.453382 117.329314 45.628074 117.329314 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #7c6ccf; stroke: #ffffff; stroke-width: 0.45; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 6.9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #42949e" x="103.702482" y="94.208859" transform="rotate(-0 103.702482 94.208859)">Prompts</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(103.702482 98.41415)">catalog fields +</text>
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(103.702482 105.013459)">relation</text>
+   </g>
+   <g id="patch_20">
+    <path d="M 126.833814 117.329314 
+C 128.008506 117.329314 129.135243 117.19067 129.965875 116.943917 
+C 130.796508 116.697164 131.263218 116.362448 131.263218 116.013487 
+C 131.263218 115.664525 130.796508 115.32981 129.965875 115.083057 
+C 129.135243 114.836304 128.008506 114.69766 126.833814 114.69766 
+C 125.659122 114.69766 124.532385 114.836304 123.701752 115.083057 
+C 122.87112 115.32981 122.40441 115.664525 122.40441 116.013487 
+C 122.40441 116.362448 122.87112 116.697164 123.701752 116.943917 
+C 124.532385 117.19067 125.659122 117.329314 126.833814 117.329314 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #42949e; stroke: #ffffff; stroke-width: 0.45; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 6.9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #c89b2d" x="184.908222" y="94.208859" transform="rotate(-0 184.908222 94.208859)">Bench</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(184.908222 98.41415)">hidden probe or</text>
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(184.908222 105.013459)">actions</text>
+   </g>
+   <g id="patch_21">
+    <path d="M 208.039554 117.329314 
+C 209.214246 117.329314 210.340983 117.19067 211.171615 116.943917 
+C 212.002248 116.697164 212.468958 116.362448 212.468958 116.013487 
+C 212.468958 115.664525 212.002248 115.32981 211.171615 115.083057 
+C 210.340983 114.836304 209.214246 114.69766 208.039554 114.69766 
+C 206.864862 114.69766 205.738125 114.836304 204.907492 115.083057 
+C 204.07686 115.32981 203.61015 115.664525 203.61015 116.013487 
+C 203.61015 116.362448 204.07686 116.697164 204.907492 116.943917 
+C 205.738125 117.19067 206.864862 117.329314 208.039554 117.329314 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #c89b2d; stroke: #ffffff; stroke-width: 0.45; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 6.9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #6fb36f" x="266.113962" y="94.154952" transform="rotate(-0 266.113962 94.154952)">Agent</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(266.113962 98.41415)">JSON loop chat /</text>
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(266.113962 105.013459)">reasoner</text>
+   </g>
+   <g id="patch_22">
+    <path d="M 289.245294 117.329314 
+C 290.419986 117.329314 291.546723 117.19067 292.377355 116.943917 
+C 293.207988 116.697164 293.674698 116.362448 293.674698 116.013487 
+C 293.674698 115.664525 293.207988 115.32981 292.377355 115.083057 
+C 291.546723 114.836304 290.419986 114.69766 289.245294 114.69766 
+C 288.070602 114.69766 286.943865 114.836304 286.113232 115.083057 
+C 285.2826 115.32981 284.81589 115.664525 284.81589 116.013487 
+C 284.81589 116.362448 285.2826 116.697164 286.113232 116.943917 
+C 286.943865 117.19067 288.070602 117.329314 289.245294 117.329314 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #6fb36f; stroke: #ffffff; stroke-width: 0.45; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 6.9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #b64342" x="347.319702" y="94.208859" transform="rotate(-0 347.319702 94.208859)">Law</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(347.319702 98.41415)">discovered_law(.</text>
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(347.319702 105.17199)">..) Python</text>
+   </g>
+   <g id="patch_23">
+    <path d="M 370.451034 117.329314 
+C 371.625726 117.329314 372.752463 117.19067 373.583095 116.943917 
+C 374.413728 116.697164 374.880438 116.362448 374.880438 116.013487 
+C 374.880438 115.664525 374.413728 115.32981 373.583095 115.083057 
+C 372.752463 114.836304 371.625726 114.69766 370.451034 114.69766 
+C 369.276342 114.69766 368.149605 114.836304 367.318972 115.083057 
+C 366.48834 115.32981 366.02163 115.664525 366.02163 116.013487 
+C 366.02163 116.362448 366.48834 116.697164 367.318972 116.943917 
+C 368.149605 117.19067 369.276342 117.329314 370.451034 117.329314 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #b64342; stroke: #ffffff; stroke-width: 0.45; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 6.9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #0f4d92" x="428.525442" y="94.208859" transform="rotate(-0 428.525442 94.208859)">Gate</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(428.525442 98.41415)">32 hold-outs</text>
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(428.525442 105.013459)">mean &gt;=55</text>
+   </g>
+   <g id="patch_24">
+    <path d="M 451.656774 117.329314 
+C 452.831466 117.329314 453.958203 117.19067 454.788835 116.943917 
+C 455.619468 116.697164 456.086178 116.362448 456.086178 116.013487 
+C 456.086178 115.664525 455.619468 115.32981 454.788835 115.083057 
+C 453.958203 114.836304 452.831466 114.69766 451.656774 114.69766 
+C 450.482082 114.69766 449.355345 114.836304 448.524712 115.083057 
+C 447.69408 115.32981 447.22737 115.664525 447.22737 116.013487 
+C 447.22737 116.362448 447.69408 116.697164 448.524712 116.943917 
+C 449.355345 117.19067 450.482082 117.329314 451.656774 117.329314 
+z
+" clip-path="url(#pa62d4e3c0a)" style="fill: #0f4d92; stroke: #ffffff; stroke-width: 0.45; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="99.765234" y="139.690573" transform="rotate(-0 99.765234 139.690573)">physics probe -&gt; z</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="252.333594" y="139.690573" transform="rotate(-0 252.333594 139.690573)">chemistry titration</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="402.441174" y="139.690573" transform="rotate(-0 402.441174 139.690573)">biology dose-response</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 6.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #0f4d92" x="306.470754" y="156.468087" transform="rotate(-0 306.470754 156.468087)">cross-layer checks: prior fit retention and anomaly correction</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_25">
+    <path d="M 11.177154 400.032 
+L 146.384846 400.032 
+L 146.384846 246.134133 
+L 11.177154 246.134133 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 16.585462 286.147579 
+L 55.795692 286.147579 
+L 55.795692 263.062899 
+L 16.585462 263.062899 
+z
+" clip-path="url(#pf37af9ff87)" style="fill: #dce9f6; stroke: #0f4d92; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 55.795692 286.147579 
+L 95.005923 286.147579 
+L 95.005923 263.062899 
+L 55.795692 263.062899 
+z
+" clip-path="url(#pf37af9ff87)" style="fill: #f4e8cb; stroke: #c89b2d; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 95.005923 286.147579 
+L 134.216154 286.147579 
+L 134.216154 263.062899 
+L 95.005923 263.062899 
+z
+" clip-path="url(#pf37af9ff87)" style="fill: #e1f1e2; stroke: #6fb36f; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 26.05 354.632129 
+C 27.663587 354.632129 29.211304 353.902425 30.352282 352.603725 
+C 31.493261 351.305026 32.134346 349.543364 32.134346 347.706725 
+C 32.134346 345.870087 31.493261 344.108425 30.352282 342.809725 
+C 29.211304 341.511026 27.663587 340.781321 26.05 340.781321 
+C 24.436413 340.781321 22.888696 341.511026 21.747718 342.809725 
+C 20.606739 344.108425 19.965654 345.870087 19.965654 347.706725 
+C 19.965654 349.543364 20.606739 351.305026 21.747718 352.603725 
+C 22.888696 353.902425 24.436413 354.632129 26.05 354.632129 
+z
+" clip-path="url(#pf37af9ff87)" style="fill: #0f4d92; stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 35.081385 347.706725 
+Q 41.598885 347.706725 47.277859 347.706725 
+" clip-path="url(#pf37af9ff87)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+    <path d="M 44.077859 346.106725 
+L 47.277859 347.706725 
+L 44.077859 349.306725 
+z
+" clip-path="url(#pf37af9ff87)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 57.147769 354.632129 
+C 58.761357 354.632129 60.309073 353.902425 61.450052 352.603725 
+C 62.59103 351.305026 63.232115 349.543364 63.232115 347.706725 
+C 63.232115 345.870087 62.59103 344.108425 61.450052 342.809725 
+C 60.309073 341.511026 58.761357 340.781321 57.147769 340.781321 
+C 55.534182 340.781321 53.986465 341.511026 52.845487 342.809725 
+C 51.704508 344.108425 51.063423 345.870087 51.063423 347.706725 
+C 51.063423 349.543364 51.704508 351.305026 52.845487 352.603725 
+C 53.986465 353.902425 55.534182 354.632129 57.147769 354.632129 
+z
+" clip-path="url(#pf37af9ff87)" style="fill: #42949e; stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 66.179155 347.706725 
+Q 72.696654 347.706725 78.375629 347.706725 
+" clip-path="url(#pf37af9ff87)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+    <path d="M 75.175629 346.106725 
+L 78.375629 347.706725 
+L 75.175629 349.306725 
+z
+" clip-path="url(#pf37af9ff87)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 88.245538 354.632129 
+C 89.859126 354.632129 91.406842 353.902425 92.547821 352.603725 
+C 93.6888 351.305026 94.329885 349.543364 94.329885 347.706725 
+C 94.329885 345.870087 93.6888 344.108425 92.547821 342.809725 
+C 91.406842 341.511026 89.859126 340.781321 88.245538 340.781321 
+C 86.631951 340.781321 85.084235 341.511026 83.943256 342.809725 
+C 82.802277 344.108425 82.161192 345.870087 82.161192 347.706725 
+C 82.161192 349.543364 82.802277 351.305026 83.943256 352.603725 
+C 85.084235 353.902425 86.631951 354.632129 88.245538 354.632129 
+z
+" clip-path="url(#pf37af9ff87)" style="fill: #7c6ccf; stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_34">
+    <path d="M 97.276924 347.706725 
+Q 103.794424 347.706725 109.473398 347.706725 
+" clip-path="url(#pf37af9ff87)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+    <path d="M 106.273398 346.106725 
+L 109.473398 347.706725 
+L 106.273398 349.306725 
+z
+" clip-path="url(#pf37af9ff87)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.75; stroke-linecap: round"/>
+   </g>
+   <g id="patch_35">
+    <path d="M 119.343308 354.632129 
+C 120.956895 354.632129 122.504611 353.902425 123.64559 352.603725 
+C 124.786569 351.305026 125.427654 349.543364 125.427654 347.706725 
+C 125.427654 345.870087 124.786569 344.108425 123.64559 342.809725 
+C 122.504611 341.511026 120.956895 340.781321 119.343308 340.781321 
+C 117.72972 340.781321 116.182004 341.511026 115.041025 342.809725 
+C 113.900047 344.108425 113.258962 345.870087 113.258962 347.706725 
+C 113.258962 349.543364 113.900047 351.305026 115.041025 352.603725 
+C 116.182004 353.902425 117.72972 354.632129 119.343308 354.632129 
+z
+" clip-path="url(#pf37af9ff87)" style="fill: #b64342; stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="11.177154" y="239.645478" transform="rotate(-0 11.177154 239.645478)">b</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="24.697923" y="239.683057" transform="rotate(-0 24.697923 239.683057)">Domains and relation types</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 6.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #0f4d92" x="19.0192" y="272.9154" transform="rotate(-0 19.0192 272.9154)">Physics</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 6.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="19.0192" y="279.855702" transform="rotate(-0 19.0192 279.855702)">20 domains</text>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 700; font-size: 6.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #c89b2d" x="58.229431" y="272.9154" transform="rotate(-0 58.229431 272.9154)">Chemistry</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 6.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="58.229431" y="279.855702" transform="rotate(-0 58.229431 279.855702)">20 domains</text>
+   </g>
+   <g id="text_25">
+    <text style="font-weight: 700; font-size: 6.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #6fb36f" x="97.439662" y="272.9154" transform="rotate(-0 97.439662 272.9154)">Biology</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 6.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="97.439662" y="279.855702" transform="rotate(-0 97.439662 279.855702)">20 domains</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 5.6px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #606060" x="16.585462" y="299.998387" transform="rotate(-0 16.585462 299.998387)">Experiment forms: physics probe; chemistry titration; biology dose-response</text>
+   </g>
+   <g id="text_28">
+    <text style="font-weight: 700; font-size: 6.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="16.585462" y="308.462769" transform="rotate(-0 16.585462 308.462769)">Layer chains: IURC, IUC, IURCC</text>
+   </g>
+   <g id="text_29">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="26.05" y="350.126446" transform="rotate(-0 26.05 350.126446)">I</text>
+   </g>
+   <g id="text_30">
+    <text style="font-weight: 700; font-size: 6.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="26.05" y="362.064757" transform="rotate(-0 26.05 362.064757)">initial</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 5.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(7.2 372.434125)">first predictive</text>
+    <text style="font-size: 5.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(21.608063 378.059428)">law</text>
+   </g>
+   <g id="text_32">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="57.147769" y="350.126446" transform="rotate(-0 57.147769 350.126446)">U</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 6.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="57.147769" y="362.064757" transform="rotate(-0 57.147769 362.064757)">utilize</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 5.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(34.552144 372.434125)">extrapolate while</text>
+    <text style="font-size: 5.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(36.454613 378.059428)">keeping prior fit</text>
+   </g>
+   <g id="text_35">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="88.245538" y="350.126446" transform="rotate(-0 88.245538 350.126446)">R</text>
+   </g>
+   <g id="text_36">
+    <text style="font-weight: 700; font-size: 6.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="88.245538" y="362.064757" transform="rotate(-0 88.245538 362.064757)">refine</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 5.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(71.488132 372.434125)">same family,</text>
+    <text style="font-size: 5.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(79.517663 378.059428)">tighter</text>
+    <text style="font-size: 5.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(73.164726 383.684731)">parameters</text>
+   </g>
+   <g id="text_38">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="119.343308" y="350.126446" transform="rotate(-0 119.343308 350.126446)">C</text>
+   </g>
+   <g id="text_39">
+    <text style="font-weight: 700; font-size: 6.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="119.343308" y="362.064757" transform="rotate(-0 119.343308 362.064757)">correct</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 5.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(97.398495 372.434125)">anomaly falsifies</text>
+    <text style="font-size: 5.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(110.111276 378.059428)">old law</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_36">
+    <path d="M 189.651308 400.032 
+L 324.859 400.032 
+L 324.859 246.134133 
+L 189.651308 246.134133 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_37">
+    <path d="M 239.999747 288.187315 
+L 261.362562 288.187315 
+Q 262.985054 288.187315 262.985054 286.34054 
+L 262.985054 274.952098 
+Q 262.985054 273.105324 261.362562 273.105324 
+L 239.999747 273.105324 
+Q 238.377254 273.105324 238.377254 274.952098 
+L 238.377254 286.34054 
+Q 238.377254 288.187315 239.999747 288.187315 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #e8e4f8; stroke: #7c6ccf; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_38">
+    <path d="M 280.884886 312.412848 
+L 302.247701 312.412848 
+Q 303.870193 312.412848 303.870193 310.566074 
+L 303.870193 299.177632 
+Q 303.870193 297.330857 302.247701 297.330857 
+L 280.884886 297.330857 
+Q 279.262393 297.330857 279.262393 299.177632 
+L 279.262393 310.566074 
+Q 279.262393 312.412848 280.884886 312.412848 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #f4e8cb; stroke: #c89b2d; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_39">
+    <path d="M 270.908498 363.633992 
+L 292.271314 363.633992 
+Q 293.893806 363.633992 293.893806 361.787217 
+L 293.893806 350.398775 
+Q 293.893806 348.552001 292.271314 348.552001 
+L 270.908498 348.552001 
+Q 269.286006 348.552001 269.286006 350.398775 
+L 269.286006 361.787217 
+Q 269.286006 363.633992 270.908498 363.633992 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #dceff1; stroke: #42949e; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_40">
+    <path d="M 224.859201 365.922473 
+L 246.222017 365.922473 
+Q 247.844509 365.922473 247.844509 364.075698 
+L 247.844509 352.687256 
+Q 247.844509 350.840482 246.222017 350.840482 
+L 224.859201 350.840482 
+Q 223.236709 350.840482 223.236709 352.687256 
+L 223.236709 364.075698 
+Q 223.236709 365.922473 224.859201 365.922473 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #f4d8d5; stroke: #b64342; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_41">
+    <path d="M 210.998718 315.885934 
+L 232.361534 315.885934 
+Q 233.984026 315.885934 233.984026 314.03916 
+L 233.984026 302.650718 
+Q 233.984026 300.803943 232.361534 300.803943 
+L 210.998718 300.803943 
+Q 209.376226 300.803943 209.376226 302.650718 
+L 209.376226 314.03916 
+Q 209.376226 315.885934 210.998718 315.885934 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #dce9f6; stroke: #0f4d92; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_42">
+    <path d="M 252.026376 282.125793 
+Q 267.546528 298.795232 288.862923 304.209578 
+" clip-path="url(#pac4946f44a)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 286.493752 302.163356 
+L 288.862923 304.209578 
+L 285.804442 304.877182 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_43">
+    <path d="M 290.621145 306.637943 
+Q 278.961255 329.000269 281.301976 353.325081 
+" clip-path="url(#pac4946f44a)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 282.42734 350.403856 
+L 281.301976 353.325081 
+L 279.640214 350.672055 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_44">
+    <path d="M 279.6524 355.602453 
+Q 258.229072 350.454944 238.160735 357.443284 
+" clip-path="url(#pac4946f44a)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 241.265399 357.844612 
+L 238.160735 357.443284 
+L 240.344595 355.20035 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_45">
+    <path d="M 235.598094 356.382691 
+Q 236.048577 331.304289 223.174128 310.695602 
+" clip-path="url(#pac4946f44a)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 223.470277 313.812057 
+L 223.174128 310.695602 
+L 225.844982 312.328556 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_46">
+    <path d="M 223.464932 307.44588 
+Q 240.207996 298.715572 249.305393 283.068541 
+" clip-path="url(#pac4946f44a)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 246.687722 284.785457 
+L 249.305393 283.068541 
+L 249.108323 286.192827 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #4d4d4d; stroke: #4d4d4d; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_47">
+    <path d="M 257.255154 339.242343 
+C 261.020191 339.242343 264.631529 337.539699 267.293813 334.5094 
+C 269.956096 331.479101 271.451962 327.368557 271.451962 323.083067 
+C 271.451962 318.797576 269.956096 314.687032 267.293813 311.656733 
+C 264.631529 308.626434 261.020191 306.923791 257.255154 306.923791 
+C 253.490116 306.923791 249.878778 308.626434 247.216495 311.656733 
+C 244.554211 314.687032 243.058346 318.797576 243.058346 323.083067 
+C 243.058346 327.368557 244.554211 331.479101 247.216495 334.5094 
+C 249.878778 337.539699 253.490116 339.242343 257.255154 339.242343 
+z
+" clip-path="url(#pac4946f44a)" style="fill: #f2f3f5; stroke: #c9cdd3; stroke-width: 0.65; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_5"/>
+   <g id="matplotlib.axis_6"/>
+   <g id="line2d_8">
+    <path d="M 201.82 380.025277 
+L 312.690308 380.025277 
+" clip-path="url(#pac4946f44a)" style="fill: none; stroke: #c9cdd3; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="text_41">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="189.651308" y="239.645478" transform="rotate(-0 189.651308 239.645478)">c</text>
+   </g>
+   <g id="text_42">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="203.172077" y="239.683057" transform="rotate(-0 203.172077 239.683057)">Single-layer agent loop</text>
+   </g>
+   <g id="text_43">
+    <text style="font-weight: 700; font-size: 6.4px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #7c6ccf" x="241.622239" y="284.278136" transform="rotate(-0 241.622239 284.278136)">read</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 5.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #606060" x="241.622239" y="288.828733" transform="rotate(-0 241.622239 288.828733)">task</text>
+   </g>
+   <g id="text_45">
+    <text style="font-weight: 700; font-size: 6.4px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #c89b2d" x="282.507378" y="308.50367" transform="rotate(-0 282.507378 308.50367)">experiment</text>
+   </g>
+   <g id="text_46">
+    <text style="font-size: 5.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #606060" x="282.507378" y="313.054267" transform="rotate(-0 282.507378 313.054267)">probe / ops</text>
+   </g>
+   <g id="text_47">
+    <text style="font-weight: 700; font-size: 6.4px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #42949e" x="272.530991" y="359.724813" transform="rotate(-0 272.530991 359.724813)">observe</text>
+   </g>
+   <g id="text_48">
+    <text style="font-size: 5.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(272.530991 364.27541)">numeric</text>
+    <text style="font-size: 5.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(272.530991 370.41161)">readout</text>
+   </g>
+   <g id="text_49">
+    <text style="font-weight: 700; font-size: 6.4px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #b64342" x="226.481693" y="362.013294" transform="rotate(-0 226.481693 362.013294)">submit</text>
+   </g>
+   <g id="text_50">
+    <text style="font-size: 5.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #606060" x="226.481693" y="366.563891" transform="rotate(-0 226.481693 366.563891)">Python law</text>
+   </g>
+   <g id="text_51">
+    <text style="font-weight: 700; font-size: 6.4px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #0f4d92" x="212.621211" y="311.976756" transform="rotate(-0 212.621211 311.976756)">score</text>
+   </g>
+   <g id="text_52">
+    <text style="font-size: 5.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #606060" x="212.621211" y="316.527353" transform="rotate(-0 212.621211 316.527353)">hidden points</text>
+   </g>
+   <g id="text_53">
+    <text style="font-weight: 700; font-size: 7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="257.255154" y="321.601532" transform="rotate(-0 257.255154 321.601532)">hypothesis</text>
+   </g>
+   <g id="text_54">
+    <text style="font-size: 6.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #606060" x="257.255154" y="328.179632" transform="rotate(-0 257.255154 328.179632)">update</text>
+   </g>
+   <g id="text_55">
+    <text style="font-size: 5.6px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #0f4d92" x="203.172077" y="387.720171" transform="rotate(-0 203.172077 387.720171)">physics: &lt;=40 rounds, &gt;=6 probes</text>
+   </g>
+   <g id="text_56">
+    <text style="font-size: 5.6px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #c89b2d" x="203.172077" y="393.876085" transform="rotate(-0 203.172077 393.876085)">chem/bio: &lt;=48 rounds, &gt;=8 valid experiments</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_48">
+    <path d="M 368.125462 400.032 
+L 503.333154 400.032 
+L 503.333154 246.134133 
+L 368.125462 246.134133 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_49">
+    <path d="M 373.398562 296.304838 
+L 431.808285 296.304838 
+Q 433.8364 296.304838 433.8364 293.99637 
+L 433.8364 265.986958 
+Q 433.8364 263.67849 431.808285 263.67849 
+L 373.398562 263.67849 
+Q 371.370446 263.67849 371.370446 265.986958 
+L 371.370446 293.99637 
+Q 371.370446 296.304838 373.398562 296.304838 
+z
+" clip-path="url(#pf42d88ec14)" style="fill: #dce9f6; stroke: #0f4d92; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_50">
+    <path d="M 439.650331 296.304838 
+L 498.060054 296.304838 
+Q 500.088169 296.304838 500.088169 293.99637 
+L 500.088169 265.986958 
+Q 500.088169 263.67849 498.060054 263.67849 
+L 439.650331 263.67849 
+Q 437.622215 263.67849 437.622215 265.986958 
+L 437.622215 293.99637 
+Q 437.622215 296.304838 439.650331 296.304838 
+z
+" clip-path="url(#pf42d88ec14)" style="fill: #f2f3f5; stroke: #c9cdd3; stroke-width: 0.75; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_51">
+    <path d="M 411.391923 366.174469 
+L 425.588731 366.174469 
+L 425.588731 365.251082 
+L 411.391923 365.251082 
+z
+" clip-path="url(#pf42d88ec14)" style="fill: #606060; stroke: #606060; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_52">
+    <path d="M 443.841769 366.174469 
+L 458.038577 366.174469 
+L 458.038577 339.139744 
+L 443.841769 339.139744 
+z
+" clip-path="url(#pf42d88ec14)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_7"/>
+   <g id="matplotlib.axis_8"/>
+   <g id="line2d_9">
+    <path d="M 381.646231 366.174469 
+L 381.646231 313.849195 
+" clip-path="url(#pf42d88ec14)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 381.646231 366.174469 
+L 487.108231 366.174469 
+" clip-path="url(#pf42d88ec14)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 380.023738 366.174469 
+L 381.646231 366.174469 
+" clip-path="url(#pf42d88ec14)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 380.023738 340.011832 
+L 381.646231 340.011832 
+" clip-path="url(#pf42d88ec14)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 380.023738 313.849195 
+L 381.646231 313.849195 
+" clip-path="url(#pf42d88ec14)" style="fill: none; stroke: #4d4d4d; stroke-width: 0.5; stroke-linecap: square"/>
+   </g>
+   <g id="text_57">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="368.125462" y="239.645478" transform="rotate(-0 368.125462 239.645478)">d</text>
+   </g>
+   <g id="text_58">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="381.646231" y="239.683057" transform="rotate(-0 381.646231 239.683057)">Scoring and seed-0 summary</text>
+   </g>
+   <g id="text_59">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #0f4d92" x="374.615431" y="274.927287" transform="rotate(-0 374.615431 274.927287)">layer conformance</text>
+   </g>
+   <g id="text_60">
+    <text style="font-size: 5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(374.615431 279.173947)">mean of 32 hidden hold-out</text>
+    <text style="font-size: 5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(374.615431 284.962814)">points; point score decays</text>
+    <text style="font-size: 5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(374.615431 290.751681)">with relative error</text>
+   </g>
+   <g id="text_61">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="440.8672" y="274.927287" transform="rotate(-0 440.8672 274.927287)">domain composite</text>
+   </g>
+   <g id="text_62">
+    <text style="font-size: 5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(440.8672 279.173947)">0.45 x processScore + 0.55</text>
+    <text style="font-size: 5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(440.8672 284.962814)">x finalRuleScore; runner</text>
+    <text style="font-size: 5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #606060" transform="translate(440.8672 290.751681)">stops at failed gate</text>
+   </g>
+   <g id="text_63">
+    <text style="font-size: 5.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: end; fill: #606060" x="378.266038" y="367.636938" transform="rotate(-0 378.266038 367.636938)">0</text>
+   </g>
+   <g id="text_64">
+    <text style="font-size: 5.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: end; fill: #606060" x="378.266038" y="341.474301" transform="rotate(-0 378.266038 341.474301)">30</text>
+   </g>
+   <g id="text_65">
+    <text style="font-size: 5.3px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: end; fill: #606060" x="378.266038" y="315.311663" transform="rotate(-0 378.266038 315.311663)">60</text>
+   </g>
+   <g id="text_66">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="418.490327" y="379.045946" transform="rotate(-0 418.490327 379.045946)">chat</text>
+   </g>
+   <g id="text_67">
+    <text style="font-weight: 700; font-size: 6.1px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #606060" x="418.490327" y="361.058413" transform="rotate(-0 418.490327 361.058413)">0/60</text>
+   </g>
+   <g id="text_68">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="450.940173" y="379.045946" transform="rotate(-0 450.940173 379.045946)">reasoner</text>
+   </g>
+   <g id="text_69">
+    <text style="font-weight: 700; font-size: 6.1px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #0f4d92" x="450.940173" y="334.023688" transform="rotate(-0 450.940173 334.023688)">31/60</text>
+   </g>
+   <g id="text_70">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #272727" x="435.729308" y="309.486874" transform="rotate(-0 435.729308 309.486874)">full-chain domains</text>
+   </g>
+   <g id="text_71">
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #606060" x="381.646231" y="384.642213" transform="rotate(-0 381.646231 384.642213)">reasoner: 13/20 physics; 18/40 chemistry/biology</text>
+   </g>
+   <g id="text_72">
+    <text style="font-size: 5.7px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #606060" x="381.646231" y="391.567617" transform="rotate(-0 381.646231 391.567617)">oracle smoke: 4/4 layers passed</text>
+   </g>
+  </g>
+  <g id="text_73">
+   <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #272727" x="11.177154" y="15.938203" transform="rotate(-0 11.177154 15.938203)">Science Bench V2 procedural benchmark architecture</text>
+  </g>
+  <g id="text_74">
+   <text style="font-size: 7.1px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #606060" x="11.177154" y="28.218891" transform="rotate(-0 11.177154 28.218891)">A multi-layer scientific discovery benchmark with hidden simulators, executable laws and cross-layer gates</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa62d4e3c0a">
+   <rect x="11.177154" y="42.912" width="492.156" height="146.202973"/>
+  </clipPath>
+  <clipPath id="pf37af9ff87">
+   <rect x="11.177154" y="246.134133" width="135.207692" height="153.897867"/>
+  </clipPath>
+  <clipPath id="pac4946f44a">
+   <rect x="189.651308" y="246.134133" width="135.207692" height="153.897867"/>
+  </clipPath>
+  <clipPath id="pf42d88ec14">
+   <rect x="368.125462" y="246.134133" width="135.207692" height="153.897867"/>
+  </clipPath>
+ </defs>
 </svg>

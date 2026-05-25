@@ -19,13 +19,16 @@ Nature-style architecture diagram using the `nature-figure` design rules.
 ## Files
 
 - `science_bench_v2_architecture.svg` - generated architecture diagram.
+- `science_bench_v2_architecture.pdf` - vector export for manuscripts.
+- `science_bench_v2_architecture.png` - high-resolution raster preview.
 - `generate_science_bench_v2_architecture.py` - reproducible generator.
 
-Regenerate the SVG with:
+Regenerate the figure bundle with:
 
 ```bash
 python3 examples/science_bench_v2_architecture/generate_science_bench_v2_architecture.py
 ```
 
-The generator uses only the Python standard library so it can run in lightweight
-agent environments without installing plotting dependencies.
+The generator uses the Python `matplotlib` backend recommended by the
+`nature-figure` skill. It draws with publication-style patches and direct labels
+rather than HTML-like cards, while preserving editable SVG text.
