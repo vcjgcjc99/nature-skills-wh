@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1220"
+     viewBox="0 0 1800 1220" role="img"
+     aria-label="Science Bench V2 architecture diagram">
+
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="10" refX="12" refY="5"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 14 5 L 0 10 z" fill="#4D4D4D"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="14" markerHeight="10" refX="12" refY="5"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 14 5 L 0 10 z" fill="#0F4D92"/>
+    </marker>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <text x="70.0" y="58.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="34.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Science Bench V2 procedural benchmark architecture</text>
+  <text x="70.0" y="92.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">60 domains | hidden simulators | I/U/R/C layered discovery | 32-point hold-out gates</text>
+  <rect x="1340.0" y="38.0" width="380.0" height="58.0" rx="20.0" fill="#EFEFF2" stroke="none" stroke-width="1.4" opacity="1.000"/>
+  <text x="1365.0" y="62.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="700" font-style="normal" fill="#767676" text-anchor="start">figure contract</text>
+  <text x="1365.0" y="84.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">schematic-led composite; SVG-first output</text>
+  <rect x="60.0" y="125.0" width="1160.0" height="520.0" rx="24.0" fill="#FAFAFC" stroke="#EFEFF2" stroke-width="1.6" opacity="1.000" filter="url(#shadow)"/>
+  <text x="82.0" y="163.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="28.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">a</text>
+  <text x="122.0" y="163.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="25.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">End-to-end benchmark pipeline</text>
+  <rect x="100.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#E0E0F0" stroke="#9A4D8E" stroke-width="2.2" opacity="1.000"/>
+  <text x="118.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Domain catalogs</text>
+  <text x="118.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">60 fixed domains</text>
+  <text x="118.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">physics /</text>
+  <text x="118.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">chemistry /</text>
+  <text x="118.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">biology</text>
+  <text x="118.0" y="354.7" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">3-5 layers each</text>
+  <line x1="261.0" y1="296.0" x2="283.0" y2="296.0" stroke="#4D4D4D" stroke-width="3.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <rect x="289.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#E0F0F0" stroke="#42949E" stroke-width="2.2" opacity="1.000"/>
+  <text x="307.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Layer prompts</text>
+  <text x="307.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">runtime assembly</text>
+  <text x="307.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">relation: initial,</text>
+  <text x="307.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">utilize,</text>
+  <text x="307.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">refine, correct</text>
+  <line x1="450.0" y1="296.0" x2="472.0" y2="296.0" stroke="#4D4D4D" stroke-width="3.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <rect x="478.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#F0E0D0" stroke="#FFD700" stroke-width="2.2" opacity="1.000"/>
+  <text x="496.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Hidden benches</text>
+  <text x="496.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">physics probe -&gt; z</text>
+  <text x="496.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">chem/bio atomic</text>
+  <text x="496.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">actions</text>
+  <text x="496.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">weak noise by seed</text>
+  <line x1="639.0" y1="296.0" x2="661.0" y2="296.0" stroke="#4D4D4D" stroke-width="3.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <rect x="667.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#DDF3DE" stroke="#8BCF8B" stroke-width="2.2" opacity="1.000"/>
+  <text x="685.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">LLM runner</text>
+  <text x="685.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">DeepSeek chat /</text>
+  <text x="685.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">reasoner</text>
+  <text x="685.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">JSON action loop</text>
+  <text x="685.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">round limits</text>
+  <line x1="828.0" y1="296.0" x2="850.0" y2="296.0" stroke="#4D4D4D" stroke-width="3.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <rect x="856.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#F6CFCB" stroke="#B64342" stroke-width="2.2" opacity="1.000"/>
+  <text x="874.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Law submit</text>
+  <text x="874.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">def</text>
+  <text x="874.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">discovered_law(...)</text>
+  <text x="874.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">executable Python</text>
+  <text x="874.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">same template for</text>
+  <text x="874.0" y="354.7" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">utilize</text>
+  <line x1="1017.0" y1="296.0" x2="1039.0" y2="296.0" stroke="#4D4D4D" stroke-width="3.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <rect x="1045.0" y="225.0" width="155.0" height="142.0" rx="18.0" fill="#E8EFF8" stroke="#0F4D92" stroke-width="2.2" opacity="1.000"/>
+  <text x="1063.0" y="255.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Evaluation</text>
+  <text x="1063.0" y="283.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">32 hidden hold-out</text>
+  <text x="1063.0" y="300.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">points</text>
+  <text x="1063.0" y="318.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">conformance +</text>
+  <text x="1063.0" y="336.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">cross-layer</text>
+  <text x="1063.0" y="354.7" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">advance if score</text>
+  <text x="1063.0" y="372.6" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">&gt;=55</text>
+  <rect x="172.0" y="448.0" width="880.0" height="118.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="1.4" opacity="1.000"/>
+  <text x="202.0" y="482.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="20.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Layer-to-layer mechanics</text>
+  <text x="202.0" y="512.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">utilize: new law keeps the same template and still fits the previous layer</text>
+  <text x="202.0" y="531.8" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">domain</text>
+  <text x="202.0" y="551.7" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">correct: previous law must fail in the anomaly region; new law covers the full</text>
+  <text x="202.0" y="571.5" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">range</text>
+  <polyline points="1055.0,296.0 1110.0,296.0 1110.0,506.0 1055.0,506.0" fill="none" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+  <text x="1085.0" y="333.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="700" font-style="normal" fill="#0F4D92" text-anchor="middle">reports</text>
+  <text x="1085.0" y="357.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="700" font-style="normal" fill="#0F4D92" text-anchor="middle">scores</text>
+  <rect x="112.0" y="390.0" width="168.0" height="36.0" rx="18.0" fill="#E8EFF8" stroke="#3775BA" stroke-width="1.0" opacity="1.000"/>
+  <text x="196.0" y="414.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Physics: probe(...)</text>
+  <rect x="302.0" y="390.0" width="194.0" height="36.0" rx="18.0" fill="#F0E0D0" stroke="#FFD700" stroke-width="1.0" opacity="1.000"/>
+  <text x="399.0" y="414.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Chemistry: add/read</text>
+  <rect x="518.0" y="390.0" width="176.0" height="36.0" rx="18.0" fill="#DDF3DE" stroke="#8BCF8B" stroke-width="1.0" opacity="1.000"/>
+  <text x="606.0" y="414.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Biology: dose/read</text>
+  <text x="715.0" y="415.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#272727" text-anchor="start">all lanes submit the same object: an executable prediction law</text>
+  <rect x="1260.0" y="125.0" width="480.0" height="520.0" rx="24.0" fill="#FAFAFC" stroke="#EFEFF2" stroke-width="1.6" opacity="1.000" filter="url(#shadow)"/>
+  <text x="1282.0" y="163.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="28.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">b</text>
+  <text x="1322.0" y="163.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="25.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Domain and relation landscape</text>
+  <rect x="1300.0" y="205.0" width="400.0" height="66.0" rx="18.0" fill="#E8EFF8" stroke="#0F4D92" stroke-width="2.0" opacity="1.000"/>
+  <text x="1322.0" y="234.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="20.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Physics</text>
+  <text x="1582.0" y="234.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="18.0" font-weight="700" font-style="normal" fill="#0F4D92" text-anchor="middle">20 domains</text>
+  <text x="1322.0" y="259.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">one-step probe -&gt; scalar z</text>
+  <rect x="1300.0" y="293.0" width="400.0" height="66.0" rx="18.0" fill="#F0E0D0" stroke="#FFD700" stroke-width="2.0" opacity="1.000"/>
+  <text x="1322.0" y="322.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="20.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Chemistry</text>
+  <text x="1582.0" y="322.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="18.0" font-weight="700" font-style="normal" fill="#FFD700" text-anchor="middle">20 domains</text>
+  <text x="1322.0" y="347.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">titration / buffer operations</text>
+  <rect x="1300.0" y="381.0" width="400.0" height="66.0" rx="18.0" fill="#DDF3DE" stroke="#8BCF8B" stroke-width="2.0" opacity="1.000"/>
+  <text x="1322.0" y="410.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="20.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Biology</text>
+  <text x="1582.0" y="410.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="18.0" font-weight="700" font-style="normal" fill="#8BCF8B" text-anchor="middle">20 domains</text>
+  <text x="1322.0" y="435.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">dose / incubate / response</text>
+  <text x="1300.0" y="505.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Layer relation vocabulary</text>
+  <rect x="1304.0" y="528.0" width="74.0" height="66.0" rx="16.0" fill="#3775BA" stroke="#3775BA" stroke-width="1.0" opacity="1.000"/>
+  <text x="1341.0" y="556.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="24.0" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">I</text>
+  <text x="1341.0" y="580.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">initial</text>
+  <rect x="1402.0" y="528.0" width="74.0" height="66.0" rx="16.0" fill="#42949E" stroke="#42949E" stroke-width="1.0" opacity="1.000"/>
+  <text x="1439.0" y="556.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="24.0" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">U</text>
+  <text x="1439.0" y="580.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">utilize</text>
+  <rect x="1500.0" y="528.0" width="74.0" height="66.0" rx="16.0" fill="#9A4D8E" stroke="#9A4D8E" stroke-width="1.0" opacity="1.000"/>
+  <text x="1537.0" y="556.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="24.0" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">R</text>
+  <text x="1537.0" y="580.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">refine</text>
+  <rect x="1598.0" y="528.0" width="74.0" height="66.0" rx="16.0" fill="#B64342" stroke="#B64342" stroke-width="1.0" opacity="1.000"/>
+  <text x="1635.0" y="556.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="24.0" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">C</text>
+  <text x="1635.0" y="580.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="700" font-style="normal" fill="#FFFFFF" text-anchor="middle">correct</text>
+  <text x="1300.0" y="620.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">Common chains: IURC, IUC, IURCC</text>
+  <rect x="60.0" y="690.0" width="820.0" height="430.0" rx="24.0" fill="#FAFAFC" stroke="#EFEFF2" stroke-width="1.6" opacity="1.000" filter="url(#shadow)"/>
+  <text x="82.0" y="728.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="28.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">c</text>
+  <text x="122.0" y="728.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="25.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Single-layer agent loop and gate</text>
+  <rect x="130.0" y="780.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
+  <text x="148.0" y="810.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Read task</text>
+  <text x="148.0" y="838.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">phenomenon +</text>
+  <text x="148.0" y="855.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">actions</text>
+  <rect x="360.0" y="780.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
+  <text x="378.0" y="810.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Experiment</text>
+  <text x="378.0" y="838.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">probe or atomic</text>
+  <text x="378.0" y="855.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">ops</text>
+  <rect x="590.0" y="780.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
+  <text x="608.0" y="810.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Observation</text>
+  <text x="608.0" y="838.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">scalar / pH /</text>
+  <text x="608.0" y="855.9" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">response</text>
+  <rect x="590.0" y="960.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
+  <text x="608.0" y="990.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Submit law</text>
+  <text x="608.0" y="1018.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">Python function</text>
+  <rect x="360.0" y="960.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
+  <text x="378.0" y="990.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Hold-out</text>
+  <text x="378.0" y="1018.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">32 hidden points</text>
+  <rect x="130.0" y="960.0" width="160.0" height="74.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="2.2" opacity="1.000"/>
+  <text x="148.0" y="990.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Decision</text>
+  <text x="148.0" y="1018.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">advance or stop</text>
+  <line x1="294.0" y1="817.0" x2="356.0" y2="817.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <line x1="524.0" y1="817.0" x2="586.0" y2="817.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <line x1="670.0" y1="858.0" x2="670.0" y2="956.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <line x1="586.0" y1="997.0" x2="524.0" y2="997.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <line x1="356.0" y1="997.0" x2="294.0" y2="997.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <line x1="210.0" y1="956.0" x2="210.0" y2="858.0" stroke="#0F4D92" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <rect x="323.0" y="872.0" width="244.0" height="62.0" rx="20.0" fill="#EFEFF2" stroke="none" stroke-width="1.4" opacity="1.000"/>
+  <text x="445.0" y="898.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="17.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">hypothesis update</text>
+  <text x="445.0" y="921.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="middle">agent plans next action</text>
+  <rect x="105.0" y="1050.0" width="320.0" height="42.0" rx="18.0" fill="#E8EFF8" stroke="#3775BA" stroke-width="1.2" opacity="1.000"/>
+  <text x="265.0" y="1077.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Physics: &lt;=40 rounds, &gt;=6 probes</text>
+  <rect x="455.0" y="1050.0" width="360.0" height="42.0" rx="18.0" fill="#F0E0D0" stroke="#FFD700" stroke-width="1.2" opacity="1.000"/>
+  <text x="635.0" y="1077.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Chem/Bio: &lt;=48 rounds, &gt;=8 valid experiments</text>
+  <rect x="920.0" y="690.0" width="820.0" height="430.0" rx="24.0" fill="#FAFAFC" stroke="#EFEFF2" stroke-width="1.6" opacity="1.000" filter="url(#shadow)"/>
+  <text x="942.0" y="728.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="28.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">d</text>
+  <text x="982.0" y="728.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="25.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Scoring, gates and observed execution</text>
+  <rect x="960.0" y="770.0" width="330.0" height="116.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="1.4" opacity="1.000"/>
+  <text x="982.0" y="804.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Layer conformance</text>
+  <text x="982.0" y="835.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">pointScore = 100 x exp(-(relErr / th)^2)</text>
+  <text x="982.0" y="863.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="700" font-style="normal" fill="#0F4D92" text-anchor="start">advance gate: mean score &gt;= 55</text>
+  <rect x="960.0" y="915.0" width="330.0" height="116.0" rx="18.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="1.4" opacity="1.000"/>
+  <text x="982.0" y="949.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="19.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Domain composite</text>
+  <text x="982.0" y="980.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">0.45 x processScore + 0.55 x finalRuleScore</text>
+  <text x="982.0" y="1008.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="15.5" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">runner stops when a layer fails the gate</text>
+  <line x1="1355.0" y1="1000.0" x2="1635.0" y2="1000.0" stroke="#767676" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="1355.0" y1="780.0" x2="1355.0" y2="1000.0" stroke="#767676" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="1349.0" y1="1000.0" x2="1355.0" y2="1000.0" stroke="#767676" stroke-width="1.2" stroke-linecap="round"/>
+  <text x="1343.0" y="1005.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="400" font-style="normal" fill="#767676" text-anchor="end">0</text>
+  <line x1="1349.0" y1="890.0" x2="1355.0" y2="890.0" stroke="#767676" stroke-width="1.2" stroke-linecap="round"/>
+  <text x="1343.0" y="895.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="400" font-style="normal" fill="#767676" text-anchor="end">30</text>
+  <line x1="1349.0" y1="780.0" x2="1355.0" y2="780.0" stroke="#767676" stroke-width="1.2" stroke-linecap="round"/>
+  <text x="1343.0" y="785.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="12.5" font-weight="400" font-style="normal" fill="#767676" text-anchor="end">60</text>
+  <rect x="1415.0" y="1000.0" width="58.0" height="2.0" rx="8.0" fill="#767676" stroke="#767676" stroke-width="1.0" opacity="1.000"/>
+  <text x="1444.0" y="1026.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="middle">chat</text>
+  <text x="1444.0" y="988.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="700" font-style="normal" fill="#767676" text-anchor="middle">0/60</text>
+  <rect x="1515.0" y="886.3" width="58.0" height="113.7" rx="8.0" fill="#0F4D92" stroke="#0F4D92" stroke-width="1.0" opacity="1.000"/>
+  <text x="1544.0" y="1026.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="middle">reasoner</text>
+  <text x="1544.0" y="874.3" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.0" font-weight="700" font-style="normal" fill="#0F4D92" text-anchor="middle">31/60</text>
+  <text x="1495.0" y="762.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="18.0" font-weight="700" font-style="normal" fill="#272727" text-anchor="middle">Full-chain domains</text>
+  <rect x="1350.0" y="1040.0" width="305.0" height="34.0" rx="12.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="1.0" opacity="1.000"/>
+  <rect x="1350.0" y="1040.0" width="198.2" height="34.0" rx="12.0" fill="#3775BA" stroke="#3775BA" stroke-width="1.0" opacity="1.000"/>
+  <text x="1362.0" y="1062.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Physics reasoner</text>
+  <text x="1643.0" y="1062.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="end">13/20</text>
+  <rect x="1350.0" y="1083.0" width="305.0" height="34.0" rx="12.0" fill="#FFFFFF" stroke="#EFEFF2" stroke-width="1.0" opacity="1.000"/>
+  <rect x="1350.0" y="1083.0" width="137.2" height="34.0" rx="12.0" fill="#42949E" stroke="#42949E" stroke-width="1.0" opacity="1.000"/>
+  <text x="1362.0" y="1105.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="start">Chem/Bio reasoner</text>
+  <text x="1643.0" y="1105.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="700" font-style="normal" fill="#272727" text-anchor="end">18/40</text>
+  <text x="960.0" y="1082.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="16.0" font-weight="400" font-style="normal" fill="#4D4D4D" text-anchor="start">Oracle smoke: 4/4 layers passed, supporting implementation validity.</text>
+  <text x="70.0" y="1178.0" font-family="Arial, DejaVu Sans, Liberation Sans, sans-serif" font-size="14.5" font-weight="400" font-style="normal" fill="#767676" text-anchor="start">Source synthesis: Science Bench V2 evaluation report (seed 0) and nature-figure design rules; generated as editable SVG.</text>
+</svg>
